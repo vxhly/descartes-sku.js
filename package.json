@@ -1,7 +1,7 @@
 {
   "name": "descartes.js",
   "version": "1.0.0",
-  "description": "笛卡尔算法、用于生成商品 sku",
+  "description": "笛卡尔乘积算法、用于生成商品 sku",
   "main": "src/index.js",
   "scripts": {
     "build:patch": "gulp bump:patch && gulp dev",
