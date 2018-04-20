@@ -9,7 +9,8 @@
     "build:minor": "gulp bump:minor && gulp dev",
     "build:major": "gulp bump:major && gulp dev",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "test": "node dist/test.js"
+    "test1": "node dist/test1.js",
+    "test2": "node dist/test2.js"
   },
   "repository": {
     "type": "git",

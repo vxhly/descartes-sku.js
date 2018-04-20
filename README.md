@@ -39,10 +39,10 @@ import Descartes from './descartes.js'
 
 const arr1 = [['a', 'b', 'c']]
 const descartes1 = new Descartes(arr1)
-const result1 = descartes1.descartes()
+const result1 = descartes1.descartes_1()
 
 console.log('result1', result1)
-//  => [ 'a', 'b', 'c' ]
+//  => [ ['a'], ['b'], ['c'] ]
 
 const arr2 = [['a', 'b', 'c'], [1, 2, 3, 4, 5]]
 const descartes2 = new Descartes(arr2)

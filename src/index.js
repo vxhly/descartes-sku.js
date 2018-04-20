@@ -5,14 +5,40 @@ class Descartes {
    * @param  {[Array]}    arr [[Array1,Array2,Array3,...]]
    */
   constructor (arr) {
-    this._arr = arr
+    if (!Array.isArray(arr)) throw new TypeError()
+    else this._arr = arr
   }
+  descartes_2 () {
+    const arr = this._arr
+    const end = arr.length - 1
+    const result = []
+
+    const recursive = (curr, start) => {
+      const first = arr[start]
+      const last = (start === end)
+      for (var i = 0; i < first.length; ++i) {
+        var copy = curr.slice()
+        copy.push(first[i])
+        if (last) {
+          result.push(copy)
+        } else {
+          recursive(copy, start + 1)
+        }
+      }
+    }
+
+    if (arr.length) recursive([], 0)
+    else result.push([])
+
+    return result
+  }
+
   /**
-   * [descartes 入口函数]
-   * @method descartes
+   * [descartes_1 入口函数]
+   * @method descartes_1
    * @return {[Array]}  [Array|[Array1,Array2,Array3,...]]
    */
-  descartes () {
+  descartes_1 () {
     const arr = this._arr
     let result = []
 
@@ -28,13 +54,13 @@ class Descartes {
    * [descartes1 如果传入的参数只有一个数组，求笛卡尔积结果]
    * @method descartes1
    * @param  {[Array]}   arr1 [一维数组]
-   * @return {[Array]}   [一维数组]
+   * @return {[Array]}   [二维数组]
    */
   descartes1 (arr1) {
     const result = []
 
     for (let i in arr1) {
-      result.push(arr1[i])
+      result.push([arr1[i]])
     }
 
     return result
