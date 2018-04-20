@@ -1,0 +1,24 @@
+# @Author: 欧鹏程
+# @Date:   2018-04-20T20:51:50+08:00
+# @Email:  pengchengou@gmail.com
+# @Filename: .travis.yml
+# @Last modified by:   欧鹏程
+# @Last modified time: 2018-04-20T20:54:38+08:00
+# @License: MIT
+
+language: node_js
+node_js: '9'
+dist: trusty
+before_install:
+  - npm i -g gulp
+install:
+  - npm install
+deploy:
+  provider: npm
+  skip_cleanup: true
+  email: pengchengou@gmail.com
+  api_key:
+    secure: xaaYcS+JfdZtKyHW3cnFQHYHM7Yq/7mcce0CKpErKrKKq7vKPv74/1HX0Vn4S8GaAtjfmq0GtcdHqSsVnYbl2y2tVVv9FSg4pLCnhcM1pAYcm5tfTPeKF48xiL9BA9Iv7TmHXC85CT09Iof8lwaKa7B3Jx9dQJsbHheoj99yCoG18CatjNuAbHMEJ4aRRGVF8WpNZ0ZvWhJB6hToY38q9SZp8XfBCnapXIo6sQCiqIOTPFQVdE72WBGDN2qDOPaRCTr4XNbaRjWpVHnWy8mkQSKee5uLpOp/Z/zEfOv5O4qOj1nRygMmPE/nereqJlRnU7rEbKrA9A7hSEAsjxdViYmwcksrOCUM8xE2v8+JdPQWcOt2JCWAws/wMcY45RHYfBV7kbJ7kle1+syEQBdT0EU+DVVI2hagu2QzIG7w1LnooPAVJ8N5mX7kbwZjgKJFTRvgXkgqU1SsrW/hxo/WAQ8nXSkE8+juvTfq9PHOC6uJyiACOh/UuprogMPlFlVA7kXzgU1STZqPAg3i7ZhNOfFpz/OFbdGr4BLSjqY+6/fHGaIUNhL1aaT6DLsS0outvyeJ7hwRNa+OTTBxUvLHwOC673XNdwLKWnJsm5FoafIy0olsUU+TQ2wIu6FyjPydUanm3K+Rx9hLZsXmtW3NKMmR/NrNFKwwnORoMG7iR28=
+  on:
+    tags: true
+    repo: vxhly/descartes.js
