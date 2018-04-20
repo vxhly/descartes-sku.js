@@ -1,6 +1,6 @@
-# descartes.js
+# descartes-sku.js
 
-[![NPM version](https://img.shields.io/npm/v/descartes.js.svg?style=flat-square)](https://www.npmjs.com/package/descartes.js) [![Build Status](https://travis-ci.org/vxhly/descartes.js.svg?branch=master)](https://travis-ci.org/vxhly/descartes.js) [![GitHub forks](https://img.shields.io/github/forks/vxhly/descartes.js.svg)](https://github.com/vxhly/descartes.js/network) [![GitHub stars](https://img.shields.io/github/stars/vxhly/descartes.js.svg)](https://github.com/vxhly/descartes.js/stargazers) [![NPM download](https://img.shields.io/npm/dm/descartes.js.svg?style=flat-square)](https://npmjs.org/package/descartes.js) [![GitHub license](https://img.shields.io/github/license/vxhly/descartes.js.svg)](https://github.com/vxhly/descartes.js/blob/master/LICENSE)
+[![NPM version](https://img.shields.io/npm/v/descartes-sku.js.svg?style=flat-square)](https://www.npmjs.com/package/descartes-sku.js) [![Build Status](https://travis-ci.org/vxhly/descartes-sku.js.svg?branch=master)](https://travis-ci.org/vxhly/descartes-sku.js) [![GitHub forks](https://img.shields.io/github/forks/vxhly/descartes-sku.js.svg)](https://github.com/vxhly/descartes-sku.js/network) [![GitHub stars](https://img.shields.io/github/stars/vxhly/descartes-sku.js.svg)](https://github.com/vxhly/descartes-sku.js/stargazers) [![NPM download](https://img.shields.io/npm/dm/descartes-sku.js.svg?style=flat-square)](https://npmjs.org/package/descartes-sku.js) [![GitHub license](https://img.shields.io/github/license/vxhly/descartes-sku.js.svg)](https://github.com/vxhly/descartes-sku.js/blob/master/LICENSE)
 
 ## SKU
 
@@ -17,19 +17,19 @@
 ## download
 
 ```bash
-git clone https://github.com/vxhly/descartes.js.git
+git clone https://github.com/vxhly/descartes-sku.js.git
 ```
 
 ### npm
 
 ```bash
-npm install descartes.js --save
+npm install descartes-sku.js --save
 ```
 
 ### bower
 
 ```bash
-bower install descartes.js --save
+bower install descartes-sku.js --save
 ```
 
 ## USE
@@ -37,7 +37,7 @@ bower install descartes.js --save
 > 提供两套算法，推荐使用算法二
 
 ```javascript
-import Descartes from './descartes.js'
+import Descartes from './descartes-sku.js'
 
 const arr1 = [['a', 'b', 'c']]
 const descartes1 = new Descartes(arr1)

@@ -36,7 +36,7 @@ gulp.task('dev', function () {
     .pipe(gulp.dest('./dist'))
     .pipe($.webpack({// babel编译import会转成require，webpack再包装以下代码让代码里支持require
       output: {
-        filename: 'descartes.js'
+        filename: 'descartes-sku.js'
       },
       stats: {
         colors: true

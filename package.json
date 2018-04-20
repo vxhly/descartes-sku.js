@@ -1,5 +1,5 @@
 {
-  "name": "descartes.js",
+  "name": "descartes-sku.js",
   "version": "1.0.1",
   "description": "笛卡尔乘积算法、用于生成商品 sku",
   "main": "src/index.js",
@@ -14,15 +14,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/vxhly/descartes.js.git"
+    "url": "git+ssh://git@github.com/vxhly/descartes-sku.js.git"
   },
   "keywords": ["descartes", "sku", "javascript", "es6"],
   "author": "vxhly <pengchengou@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vxhly/descartes.js/issues"
+    "url": "https://github.com/vxhly/descartes-sku.js/issues"
   },
-  "homepage": "https://github.com/vxhly/descartes.js#readme",
+  "homepage": "https://github.com/vxhly/descartes-sku.js#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.3",
