@@ -40,7 +40,7 @@ var Descartes = function () {
       var result = [];
       var arr = [];
       for (var i in obj) {
-        arr.push(obj[i]);
+        if (obj[i].length > 0) arr.push(obj[i]);
       }
       var descartes_arr = this.descartes_2(arr);
       descartes_arr.forEach(function (item) {

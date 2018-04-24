@@ -96,7 +96,7 @@
 	      var result = [];
 	      var arr = [];
 	      for (var i in obj) {
-	        arr.push(obj[i]);
+	        if (obj[i].length > 0) arr.push(obj[i]);
 	      }
 	      var descartes_arr = this.descartes_2(arr);
 	      descartes_arr.forEach(function (item) {
@@ -17488,6 +17488,12 @@
 
 	console.log('result2', result2);
 	// =>  [ { size: 'XL' }, { size: 'XXL' } ]
+
+	var obj3 = { size: ['XL', 'XXL'], type: [] };
+	var descartes3 = new _index2.default(obj3);
+	var result3 = descartes3.descartes_obj();
+
+	console.log('result3', result3);
 
 /***/ })
 /******/ ]);

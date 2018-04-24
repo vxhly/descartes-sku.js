@@ -22,7 +22,7 @@ class Descartes {
     let result = []
     const arr = []
     for (let i in obj) {
-      arr.push(obj[i])
+      if (obj[i].length > 0) arr.push(obj[i])
     }
     const descartes_arr = this.descartes_2(arr)
     descartes_arr.forEach(item => {

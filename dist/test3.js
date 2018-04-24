@@ -19,3 +19,9 @@ var result2 = descartes2.descartes_obj();
 
 console.log('result2', result2);
 // =>  [ { size: 'XL' }, { size: 'XXL' } ]
+
+var obj3 = { size: ['XL', 'XXL'], type: [] };
+var descartes3 = new _index2.default(obj3);
+var result3 = descartes3.descartes_obj();
+
+console.log('result3', result3);

@@ -13,3 +13,10 @@ const result2 = descartes2.descartes_obj()
 
 console.log('result2', result2)
 // =>  [ { size: 'XL' }, { size: 'XXL' } ]
+
+const obj3 = { size: ['XL', 'XXL'], type: [] }
+const descartes3 = new Descartes(obj3)
+const result3 = descartes3.descartes_obj()
+
+console.log('result3', result3)
+// =>  [ { size: 'XL' }, { size: 'XXL' } ]
