@@ -77,6 +77,19 @@ console.log('result3', result3)
 //    ]
 ```
 
+> 如果需要输出结果带有 key,则传入的必须为对象
+
+```javascript
+import Descartes from './descartes-sku.js'
+
+const obj = { size: ['XL', 'XXL'], type: ['羊毛'] }
+const descartes = new Descartes(obj)
+const result = descartes.descartes_obj()
+
+console.log('result1', result)
+//  =>  [ { size: 'XL', type: '羊毛' }, { size: 'XXL', type: '羊毛' } ]
+```
+
 ## test
 
 ```bash

@@ -10,18 +10,14 @@
     "build:major": "gulp bump:major && gulp dev",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test1": "node dist/test1.js",
-    "test2": "node dist/test2.js"
+    "test2": "node dist/test2.js",
+    "test3": "node dist/test3.js"
   },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/vxhly/descartes-sku.js.git"
   },
-  "keywords": [
-    "descartes",
-    "sku",
-    "javascript",
-    "es6"
-  ],
+  "keywords": ["descartes", "sku", "javascript", "es6"],
   "author": "vxhly <pengchengou@gmail.com>",
   "license": "MIT",
   "bugs": {
@@ -57,6 +53,7 @@
     }
   },
   "dependencies": {
-    "gulp-browserify": "^0.5.1"
+    "gulp-browserify": "^0.5.1",
+    "lodash": "^4.17.5"
   }
 }

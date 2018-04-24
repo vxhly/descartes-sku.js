@@ -1,22 +1,59 @@
+import _ from 'lodash'
+
 class Descartes {
   /**
    * [constructor 初始化]
    * @method constructor
-   * @param  {[Array]}    arr [[Array1,Array2,Array3,...]]
+   * @param  {[Array | Object]}    arrORobj [[Array1,Array2,Array3,...]]
    */
-  constructor (arr) {
-    if (!Array.isArray(arr)) throw new TypeError()
-    else this._arr = arr
+  constructor (arrORobj) {
+    if (_.isArray(arrORobj)) this._arr = arrORobj
+    else if (_.isObject(arrORobj)) this._obj = arrORobj
+    else throw new Error('arrORobj is Array or Object')
   }
-  descartes_2 () {
-    const arr = this._arr
+  /**
+   * [descartes_obj 对象形式输出]
+   * @method descartes_obj
+   * @return {[Object]}      [对象]
+   */
+  descartes_obj () {
+    const obj = this._obj
+    const keys = _.keys(obj)
+    let result = []
+    const arr = []
+    for (let i in obj) {
+      arr.push(obj[i])
+    }
+    const descartes_arr = this.descartes_2(arr)
+    descartes_arr.forEach(item => {
+      result.push(Object.assign({}, item))
+    })
+
+    result.forEach((item, index) => {
+      result[index] = _.mapKeys(item, (value, key) => {
+        let _key = Number(key)
+
+        return keys[_key]
+      })
+    })
+
+    return result
+  }
+
+  /**
+   * [descartes_2 算法二递归]
+   * @method descartes_2
+   * @return {[Array]}    [二维数组]
+   */
+  descartes_2 (_arr) {
+    const arr = _arr || this._arr
     const end = arr.length - 1
     const result = []
 
     const recursive = (curr, start) => {
       const first = arr[start]
       const last = (start === end)
-      for (var i = 0; i < first.length; ++i) {
+      for (let i in first) {
         var copy = curr.slice()
         copy.push(first[i])
         if (last) {
@@ -38,8 +75,8 @@ class Descartes {
    * @method descartes_1
    * @return {[Array]}  [Array|[Array1,Array2,Array3,...]]
    */
-  descartes_1 () {
-    const arr = this._arr
+  descartes_1 (_arr) {
+    const arr = _arr || this._arr
     let result = []
 
     if (!arr) return []
