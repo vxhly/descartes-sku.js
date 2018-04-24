@@ -1,6 +1,6 @@
 {
   "name": "descartes-sku.js",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "笛卡尔乘积算法、用于生成商品 sku",
   "main": "src/index.js",
   "scripts": {
