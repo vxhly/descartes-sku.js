@@ -1,3 +1,13 @@
+<a name="1.2.5"></a>
+## [1.2.5](https://github.com/vxhly/descartes-sku.js/compare/v1.2.3...v1.2.5) (2018-04-24)
+
+
+### Bug Fixes
+
+* **index test3:** 解决在删除空数组时，没有将对应的键删除 ([594b6a7](https://github.com/vxhly/descartes-sku.js/commit/594b6a7))
+
+
+
 <a name="1.2.3"></a>
 ## [1.2.3](https://github.com/vxhly/descartes-sku.js/compare/v1.2.1...v1.2.3) (2018-04-24)
 
