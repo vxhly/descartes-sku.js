@@ -1,5 +1,20 @@
-<a name="1.1.0"></a>
-# [1.1.0](https://github.com/vxhly/descartes-sku.js/compare/v1.0.1...v1.1.0) (2018-04-20)
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/vxhly/descartes-sku.js/compare/v1.1.1...v1.2.1) (2018-04-24)
+
+
+### Features
+
+* **index test3:** 支持传入对象 ([caefa40](https://github.com/vxhly/descartes-sku.js/commit/caefa40))
+
+
+### Performance Improvements
+
+* **bower.json:** 允许通过 bower i descartes-sku.js ([bd65909](https://github.com/vxhly/descartes-sku.js/commit/bd65909))
+
+
+
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/vxhly/descartes-sku.js/compare/v1.0.1...v1.1.1) (2018-04-20)
 
 
 
