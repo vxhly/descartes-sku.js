@@ -1,6 +1,6 @@
 {
   "name": "descartes-sku.js",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "笛卡尔乘积算法、用于生成商品 sku",
   "main": "src/index.js",
   "scripts": {
@@ -42,6 +42,7 @@
     "eslint-plugin-vue": "^4.5.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
+    "gulp-browserify": "^0.5.1",
     "gulp-bump": "^3.1.0",
     "gulp-load-plugins": "^1.5.0",
     "gulp-sequence": "^1.0.0",
@@ -54,7 +55,6 @@
     }
   },
   "dependencies": {
-    "gulp-browserify": "^0.5.1",
     "lodash": "^4.17.5"
   }
 }

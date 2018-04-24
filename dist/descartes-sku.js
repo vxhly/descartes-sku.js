@@ -17494,6 +17494,7 @@
 	var result3 = descartes3.descartes_obj();
 
 	console.log('result3', result3);
+	// =>  [ { size: 'XL' }, { size: 'XXL' } ]
 
 /***/ })
 /******/ ]);
