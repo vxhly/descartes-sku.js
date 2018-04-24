@@ -40,7 +40,10 @@ var Descartes = function () {
       var result = [];
       var arr = [];
       for (var i in obj) {
-        if (obj[i].length > 0) arr.push(obj[i]);
+        if (obj[i].length > 0) arr.push(obj[i]);else {
+          delete obj[i];
+          keys = keys.splice(_lodash2.default.findIndex(i), 1);
+        }
       }
       var descartes_arr = this.descartes_2(arr);
       descartes_arr.forEach(function (item) {

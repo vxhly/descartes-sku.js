@@ -20,3 +20,10 @@ const result3 = descartes3.descartes_obj()
 
 console.log('result3', result3)
 // =>  [ { size: 'XL' }, { size: 'XXL' } ]
+
+var obj4 = { size: [], type: ['羊毛', '棉'] }
+var descartes4 = new Descartes(obj4)
+var result4 = descartes4.descartes_obj()
+
+console.log('result4', result4)
+// =>  [ { type: 'XL' }, { type: 'XXL' } ]

@@ -18,11 +18,15 @@ class Descartes {
    */
   descartes_obj () {
     const obj = this._obj
-    const keys = _.keys(obj)
+    let keys = _.keys(obj)
     let result = []
     const arr = []
     for (let i in obj) {
       if (obj[i].length > 0) arr.push(obj[i])
+      else {
+        delete obj[i]
+        keys = keys.splice(_.findIndex(i), 1)
+      }
     }
     const descartes_arr = this.descartes_2(arr)
     descartes_arr.forEach(item => {

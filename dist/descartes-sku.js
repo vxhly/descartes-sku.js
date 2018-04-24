@@ -96,7 +96,10 @@
 	      var result = [];
 	      var arr = [];
 	      for (var i in obj) {
-	        if (obj[i].length > 0) arr.push(obj[i]);
+	        if (obj[i].length > 0) arr.push(obj[i]);else {
+	          delete obj[i];
+	          keys = keys.splice(_lodash2.default.findIndex(i), 1);
+	        }
 	      }
 	      var descartes_arr = this.descartes_2(arr);
 	      descartes_arr.forEach(function (item) {
@@ -17495,6 +17498,13 @@
 
 	console.log('result3', result3);
 	// =>  [ { size: 'XL' }, { size: 'XXL' } ]
+
+	var obj4 = { size: [], type: ['羊毛', '棉'] };
+	var descartes4 = new _index2.default(obj4);
+	var result4 = descartes4.descartes_obj();
+
+	console.log('result4', result4);
+	// =>  [ { type: 'XL' }, { type: 'XXL' } ]
 
 /***/ })
 /******/ ]);
