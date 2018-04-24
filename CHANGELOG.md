@@ -1,3 +1,18 @@
+<a name="1.2.3"></a>
+## [1.2.3](https://github.com/vxhly/descartes-sku.js/compare/v1.2.1...v1.2.3) (2018-04-24)
+
+
+### Bug Fixes
+
+* **index test3:** 处理传入对象，若对象中含有空数组，输出有误 ([15e6aef](https://github.com/vxhly/descartes-sku.js/commit/15e6aef))
+
+
+### BREAKING CHANGES
+
+* **index test3:** 检测数组的长度，数组的长度等于 0 则不对该数组进行解析
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/vxhly/descartes-sku.js/compare/v1.1.1...v1.2.1) (2018-04-24)
 
