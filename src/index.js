@@ -25,7 +25,7 @@ class Descartes {
       if (obj[i].length > 0) arr.push(obj[i])
       else {
         delete obj[i]
-        keys = keys.splice(_.findIndex(i), 1)
+        _.pull(keys, i)
       }
     }
     const descartes_arr = this.descartes_2(arr)

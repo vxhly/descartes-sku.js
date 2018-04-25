@@ -42,7 +42,7 @@ var Descartes = function () {
       for (var i in obj) {
         if (obj[i].length > 0) arr.push(obj[i]);else {
           delete obj[i];
-          keys = keys.splice(_lodash2.default.findIndex(i), 1);
+          _lodash2.default.pull(keys, i);
         }
       }
       var descartes_arr = this.descartes_2(arr);

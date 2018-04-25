@@ -98,7 +98,7 @@
 	      for (var i in obj) {
 	        if (obj[i].length > 0) arr.push(obj[i]);else {
 	          delete obj[i];
-	          keys = keys.splice(_lodash2.default.findIndex(i), 1);
+	          _lodash2.default.pull(keys, i);
 	        }
 	      }
 	      var descartes_arr = this.descartes_2(arr);
@@ -17526,6 +17526,20 @@
 
 	console.log('result5', result5);
 	// =>  []
+
+	var obj6 = { color: ['黄色'], size: ['XL'], type: [] };
+	var descartes6 = new _index2.default(obj6);
+	var result6 = descartes6.descartes_obj();
+
+	console.log('result6', result6);
+	// => [ { color: '黄色', size: 'XL' } ]
+
+	var obj7 = { color: [], size: ['XL'], type: ['棉'] };
+	var descartes7 = new _index2.default(obj7);
+	var result7 = descartes7.descartes_obj();
+
+	console.log('result7', result7);
+	// =>  [ { size: 'XL', type: '棉' } ]
 
 /***/ })
 /******/ ]);

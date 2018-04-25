@@ -34,3 +34,17 @@ var result5 = descartes5.descartes_obj()
 
 console.log('result5', result5)
 // =>  []
+
+var obj6 = { color: ['黄色'], size: ['XL'], type: [] }
+var descartes6 = new Descartes(obj6)
+var result6 = descartes6.descartes_obj()
+
+console.log('result6', result6)
+// => [ { color: '黄色', size: 'XL' } ]
+
+var obj7 = { color: [], size: ['XL'], type: ['棉'] }
+var descartes7 = new Descartes(obj7)
+var result7 = descartes7.descartes_obj()
+
+console.log('result7', result7)
+// =>  [ { size: 'XL', type: '棉' } ]
