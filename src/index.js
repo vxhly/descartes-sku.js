@@ -69,7 +69,6 @@ class Descartes {
     }
 
     if (arr.length) recursive([], 0)
-    else result.push([])
 
     return result
   }

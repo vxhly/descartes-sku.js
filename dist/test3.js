@@ -33,3 +33,10 @@ var result4 = descartes4.descartes_obj();
 
 console.log('result4', result4);
 // =>  [ { type: 'XL' }, { type: 'XXL' } ]
+
+var obj5 = { size: [], type: [], color: [] };
+var descartes5 = new _index2.default(obj5);
+var result5 = descartes5.descartes_obj();
+
+console.log('result5', result5);
+// =>  []

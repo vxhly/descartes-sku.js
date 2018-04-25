@@ -39,3 +39,10 @@ console.log('result3', result3);
 //      [ '黑色', 'X', 'aa' ], [ '黑色', 'X', 'bb' ], [ '黑色', 'XXL', 'aa' ],
 //      [ '黑色', 'XXL', 'bb' ], [ '黑色', 'L', 'aa' ], [ '黑色', 'L', 'bb' ]
 //    ]
+
+var arr4 = [];
+var descartes4 = new _index2.default(arr4);
+var result4 = descartes4.descartes_1();
+
+console.log('result4', result4);
+// => []

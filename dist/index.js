@@ -88,7 +88,7 @@ var Descartes = function () {
         }
       };
 
-      if (arr.length) recursive([], 0);else result.push([]);
+      if (arr.length) recursive([], 0);
 
       return result;
     }

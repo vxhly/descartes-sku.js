@@ -144,7 +144,7 @@
 	        }
 	      };
 
-	      if (arr.length) recursive([], 0);else result.push([]);
+	      if (arr.length) recursive([], 0);
 
 	      return result;
 	    }
@@ -17420,6 +17420,13 @@
 	//      [ '黑色', 'XXL', 'bb' ], [ '黑色', 'L', 'aa' ], [ '黑色', 'L', 'bb' ]
 	//    ]
 
+	var arr4 = [];
+	var descartes4 = new _index2.default(arr4);
+	var result4 = descartes4.descartes_1();
+
+	console.log('result4', result4);
+	// => []
+
 /***/ }),
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -17466,6 +17473,13 @@
 	//      [ '黑色', 'XXL', 'bb' ], [ '黑色', 'L', 'aa' ], [ '黑色', 'L', 'bb' ]
 	//    ]
 
+	var arr4 = [];
+	var descartes4 = new _index2.default(arr4);
+	var result4 = descartes4.descartes_2();
+
+	console.log('result4', result4);
+	// => []
+
 /***/ }),
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -17505,6 +17519,13 @@
 
 	console.log('result4', result4);
 	// =>  [ { type: 'XL' }, { type: 'XXL' } ]
+
+	var obj5 = { size: [], type: [], color: [] };
+	var descartes5 = new _index2.default(obj5);
+	var result5 = descartes5.descartes_obj();
+
+	console.log('result5', result5);
+	// =>  []
 
 /***/ })
 /******/ ]);
