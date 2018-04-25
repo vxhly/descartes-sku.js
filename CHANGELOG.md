@@ -1,3 +1,18 @@
+<a name="1.2.6"></a>
+## [1.2.6](https://github.com/vxhly/descartes-sku.js/compare/v1.2.5...v1.2.6) (2018-04-25)
+
+
+### Bug Fixes
+
+* **index test1 test2 test3:** 修复输入的数组长度为 0 时,输出应为 [] ([b69e15a](https://github.com/vxhly/descartes-sku.js/commit/b69e15a))
+
+
+### BREAKING CHANGES
+
+* **index test1 test2 test3:** 其中输入对象中的数组长度全为 0 时，输出应为 []
+
+
+
 <a name="1.2.5"></a>
 ## [1.2.5](https://github.com/vxhly/descartes-sku.js/compare/v1.2.3...v1.2.5) (2018-04-24)
 
