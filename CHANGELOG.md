@@ -1,5 +1,5 @@
-<a name="1.2.6"></a>
-## [1.2.6](https://github.com/vxhly/descartes-sku.js/compare/v1.2.5...v1.2.6) (2018-04-25)
+<a name="1.2.7"></a>
+## [1.2.7](https://github.com/vxhly/descartes-sku.js/compare/v1.2.5...v1.2.7) (2018-04-25)
 
 
 ### Bug Fixes
