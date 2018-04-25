@@ -1,3 +1,14 @@
+<a name="1.2.8"></a>
+## [1.2.8](https://github.com/vxhly/descartes-sku.js/compare/v1.2.7...v1.2.8) (2018-04-25)
+
+
+### Bug Fixes
+
+* **bower:** 修复 bower 版本号与 npm 版本号不一致问题 ([225d44f](https://github.com/vxhly/descartes-sku.js/commit/225d44f))
+* **index test3:** 修复删除数组元素发生的错误 ([16c1b22](https://github.com/vxhly/descartes-sku.js/commit/16c1b22))
+
+
+
 <a name="1.2.7"></a>
 ## [1.2.7](https://github.com/vxhly/descartes-sku.js/compare/v1.2.5...v1.2.7) (2018-04-25)
 
