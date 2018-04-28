@@ -1,3 +1,25 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/vxhly/descartes-sku.js/compare/v1.2.8...v1.3.0) (2018-04-28)
+
+
+### Features
+
+* **SKU2Descartes Descartes2SKU:** Descartes2SKU => 笛卡儿积转换成 SKU；SKU2Descartes => SKU 转笛卡儿积 ([4a468ad](https://github.com/vxhly/descartes-sku.js/commit/4a468ad))
+
+
+### Performance Improvements
+
+* **Descartes2SKU SKU2Descartes:** 通用方法名，自动判断输入的数值 ([82b1a56](https://github.com/vxhly/descartes-sku.js/commit/82b1a56))
+* **SKU2Descartes Descartes2SKU:** 部分方法改成私有方法 ([063025e](https://github.com/vxhly/descartes-sku.js/commit/063025e))
+
+
+### BREAKING CHANGES
+
+* **SKU2Descartes Descartes2SKU:** 由于JavaScript不提供“私有属性”与“私有方法”，所以只是在命名方式上区别一下
+* **SKU2Descartes Descartes2SKU:** Descartes => Descartes2SKU
+
+
+
 <a name="1.2.8"></a>
 ## [1.2.8](https://github.com/vxhly/descartes-sku.js/compare/v1.2.7...v1.2.8) (2018-04-25)
 
