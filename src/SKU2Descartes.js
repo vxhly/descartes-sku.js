@@ -20,19 +20,19 @@ class SKU2Descartes {
     let result = []
 
     if (_.size(sku) > 0) {
-      if (_.isArray(sku[0])) result = this.sku_arr(sku)
-      else if (_.isObject(sku[0])) result = this.sku_obj(sku)
+      if (_.isArray(sku[0])) result = this._sku_arr(sku)
+      else if (_.isObject(sku[0])) result = this._sku_obj(sku)
     }
     return result
   }
 
   /**
-   * [sku_arr SKU转换成笛卡尔乘积]
-   * @method sku_arr
+   * [_sku_arr SKU转换成笛卡尔乘积]
+   * @method _sku_arr
    * @param  {[Array]} _sku [传入SKU数组]
    * @return {[Array]} [笛卡尔乘积]
    */
-  sku_arr (_sku) {
+  _sku_arr (_sku) {
     const sku = _sku || this._arr
     let sku_length = 0
     const arr = []
@@ -54,12 +54,12 @@ class SKU2Descartes {
   }
 
   /**
-   * [sku_obj 允许传入含有键的对象]
-   * @method sku_obj
+   * [_sku_obj 允许传入含有键的对象]
+   * @method _sku_obj
    * @param  {[Array]} _sku [传入SKU数组]
    * @return {[Object]} [笛卡尔乘积数组]
    */
-  sku_obj (_sku) {
+  _sku_obj (_sku) {
     const sku = _sku || this._arr
     let sku_length = 0
     let obj = {}

@@ -46,30 +46,30 @@ var Descartes2SKU = function () {
         if (_lodash2.default.isArray(arrORobj)) {
           switch (algorithm) {
             case 1:
-              result = this.descartes_1(arrORobj);
+              result = this._descartes_1(arrORobj);
               break;
             case 2:
-              result = this.descartes_2(arrORobj);
+              result = this._descartes_2(arrORobj);
               break;
             default:
-              result = this.descartes_2(arrORobj);
+              result = this._descartes_2(arrORobj);
           }
-        } else if (_lodash2.default.isObject(arrORobj)) result = this.descartes_obj(arrORobj);
+        } else if (_lodash2.default.isObject(arrORobj)) result = this._descartes_obj(arrORobj);
       }
 
       return result;
     }
 
     /**
-     * [descartes_obj 对象形式输出]
-     * @method descartes_obj
+     * [_descartes_obj 对象形式输出]
+     * @method _descartes_obj
      * @param  {[Array | Object]}      _arrORobj [传入的数组或者对象]
      * @return {[Object]}      [对象]
      */
 
   }, {
-    key: 'descartes_obj',
-    value: function descartes_obj(_arrORobj) {
+    key: '_descartes_obj',
+    value: function _descartes_obj(_arrORobj) {
       var obj = _arrORobj || this.arrORobj;
       var keys = _lodash2.default.keys(obj);
       var result = [];
@@ -80,7 +80,7 @@ var Descartes2SKU = function () {
           _lodash2.default.pull(keys, i);
         }
       }
-      var descartes_arr = this.descartes_2(arr);
+      var descartes_arr = this._descartes_2(arr);
       descartes_arr.forEach(function (item) {
         result.push(Object.assign({}, item));
       });
@@ -97,15 +97,15 @@ var Descartes2SKU = function () {
     }
 
     /**
-     * [descartes_2 算法二递归]
-     * @method descartes_2
+     * [_descartes_2 算法二递归]
+     * @method _descartes_2
      * @param  {[Array]}    _arr [船儿的数组]
      * @return {[Array]}    [算法二递归]
      */
 
   }, {
-    key: 'descartes_2',
-    value: function descartes_2(_arr) {
+    key: '_descartes_2',
+    value: function _descartes_2(_arr) {
       var arr = _arr || this._arrORobj;
       var end = arr.length - 1;
       var result = [];
@@ -130,36 +130,36 @@ var Descartes2SKU = function () {
     }
 
     /**
-     * [descartes_1 入口函数]
-     * @method descartes_1
+     * [_descartes_1 入口函数]
+     * @method _descartes_1
      * @param  {[Array]}    _arr [船儿的数组]
      * @return {[Array]}  [Array|[Array1,Array2,Array3,...]]
      */
 
   }, {
-    key: 'descartes_1',
-    value: function descartes_1(_arr) {
+    key: '_descartes_1',
+    value: function _descartes_1(_arr) {
       var arr = _arr || this._arrORobj;
       var result = [];
 
       if (!arr) return [];
       if (arr.length <= 0) return [];
-      if (arr.length === 1) result = this.descartes1(arr[0]);
-      if (arr.length === 2) result = this.descartes2(arr[0], arr[1]);
-      if (arr.length >= 3) result = this.descartes3(arr);
+      if (arr.length === 1) result = this._descartes1(arr[0]);
+      if (arr.length === 2) result = this._descartes2(arr[0], arr[1]);
+      if (arr.length >= 3) result = this._descartes3(arr);
 
       return result;
     }
     /**
-     * [descartes1 如果传入的参数只有一个数组，求笛卡尔积结果]
-     * @method descartes1
+     * [_descartes1 如果传入的参数只有一个数组，求笛卡尔积结果]
+     * @method _descartes1
      * @param  {[Array]}   arr1 [一维数组]
      * @return {[Array]}   [二维数组]
      */
 
   }, {
-    key: 'descartes1',
-    value: function descartes1(arr1) {
+    key: '_descartes1',
+    value: function _descartes1(arr1) {
       var result = [];
 
       for (var i in arr1) {
@@ -169,16 +169,16 @@ var Descartes2SKU = function () {
       return result;
     }
     /**
-     * [descartes2 如果传入的参数只有两个数组，求笛卡尔积结果]
-     * @method descartes2
+     * [_descartes2 如果传入的参数只有两个数组，求笛卡尔积结果]
+     * @method _descartes2
      * @param  {[Array]}   arr1 [一维数组]
      * @param  {[Array]}   arr2 [一维数组]
      * @return {[Array]}   [二维数组]
      */
 
   }, {
-    key: 'descartes2',
-    value: function descartes2(arr1, arr2) {
+    key: '_descartes2',
+    value: function _descartes2(arr1, arr2) {
       var result = [];
 
       for (var i in arr1) {
@@ -190,34 +190,34 @@ var Descartes2SKU = function () {
       return result;
     }
     /**
-     * [descartes3 如果传入的参数有三个以上的数组，求笛卡尔积结果]
-     * @method descartes3
+     * [_descartes3 如果传入的参数有三个以上的数组，求笛卡尔积结果]
+     * @method _descartes3
      * @param  {[Array]}   arr [二维数组
      * @return {[Array]}   [二维数组]
      */
 
   }, {
-    key: 'descartes3',
-    value: function descartes3(arr) {
-      var arr2D = this.descartes2(arr[0], arr[1]);
+    key: '_descartes3',
+    value: function _descartes3(arr) {
+      var arr2D = this._descartes2(arr[0], arr[1]);
 
       for (var i = 2; i < arr.length; i++) {
-        arr2D = this.descartes2DAnd1D(arr2D, arr[i]);
+        arr2D = this._descartes2DAnd1D(arr2D, arr[i]);
       }
 
       return arr2D;
     }
     /**
-     * [descartes2DAnd1D 降维]
-     * @method descartes2DAnd1D
+     * [_descartes2DAnd1D 降维]
+     * @method _descartes2DAnd1D
      * @param  {[Array]}         arr2D [二维数组]
      * @param  {[Array]}         arr1D [一维数组]
      * @return {[Array]}         [二维数组]
      */
 
   }, {
-    key: 'descartes2DAnd1D',
-    value: function descartes2DAnd1D(arr2D, arr1D) {
+    key: '_descartes2DAnd1D',
+    value: function _descartes2DAnd1D(arr2D, arr1D) {
       var result = [];
 
       for (var i in arr2D) {

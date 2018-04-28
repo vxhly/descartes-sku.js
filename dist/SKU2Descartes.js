@@ -39,21 +39,21 @@ var SKU2Descartes = function () {
       var result = [];
 
       if (_lodash2.default.size(sku) > 0) {
-        if (_lodash2.default.isArray(sku[0])) result = this.sku_arr(sku);else if (_lodash2.default.isObject(sku[0])) result = this.sku_obj(sku);
+        if (_lodash2.default.isArray(sku[0])) result = this._sku_arr(sku);else if (_lodash2.default.isObject(sku[0])) result = this._sku_obj(sku);
       }
       return result;
     }
 
     /**
-     * [sku_arr SKU转换成笛卡尔乘积]
-     * @method sku_arr
+     * [_sku_arr SKU转换成笛卡尔乘积]
+     * @method _sku_arr
      * @param  {[Array]} _sku [传入SKU数组]
      * @return {[Array]} [笛卡尔乘积]
      */
 
   }, {
-    key: 'sku_arr',
-    value: function sku_arr(_sku) {
+    key: '_sku_arr',
+    value: function _sku_arr(_sku) {
       var sku = _sku || this._arr;
       var sku_length = 0;
       var arr = [];
@@ -75,15 +75,15 @@ var SKU2Descartes = function () {
     }
 
     /**
-     * [sku_obj 允许传入含有键的对象]
-     * @method sku_obj
+     * [_sku_obj 允许传入含有键的对象]
+     * @method _sku_obj
      * @param  {[Array]} _sku [传入SKU数组]
      * @return {[Object]} [笛卡尔乘积数组]
      */
 
   }, {
-    key: 'sku_obj',
-    value: function sku_obj(_sku) {
+    key: '_sku_obj',
+    value: function _sku_obj(_sku) {
       var sku = _sku || this._arr;
       var sku_length = 0;
       var obj = {};
