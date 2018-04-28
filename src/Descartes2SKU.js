@@ -10,17 +10,45 @@ class Descartes2SKU {
    * @param  {[Array | Object]}    arrORobj [[Array1,Array2,Array3,...]]
    */
   constructor (arrORobj) {
-    if (_.isArray(arrORobj)) this._arr = arrORobj
-    else if (_.isObject(arrORobj)) this._obj = arrORobj
+    if (_.isArray(arrORobj) || _.isObject(arrORobj)) this.arrORobj = arrORobj
     else throw new Error('arrORobj is Array or Object')
   }
   /**
+   * [descartes 根据输入的内容执行相应的函数]
+   * @method descartes
+   * @param  {[Number]}  algorithm [算法几，默认算法二，1，2]
+   * @return {[Array]}  [SKU数组]
+   */
+  descartes (algorithm) {
+    const arrORobj = this.arrORobj
+    let result = []
+
+    if (_.size(arrORobj) > 0) {
+      if (_.isArray(arrORobj)) {
+        switch (algorithm) {
+          case 1:
+            result = this.descartes_1(arrORobj)
+            break
+          case 2:
+            result = this.descartes_2(arrORobj)
+            break
+          default:
+            result = this.descartes_2(arrORobj)
+        }
+      } else if (_.isObject(arrORobj)) result = this.descartes_obj(arrORobj)
+    }
+
+    return result
+  }
+
+  /**
    * [descartes_obj 对象形式输出]
    * @method descartes_obj
+   * @param  {[Array | Object]}      _arrORobj [传入的数组或者对象]
    * @return {[Object]}      [对象]
    */
-  descartes_obj () {
-    const obj = this._obj
+  descartes_obj (_arrORobj) {
+    const obj = _arrORobj || this.arrORobj
     let keys = _.keys(obj)
     let result = []
     const arr = []
@@ -50,10 +78,11 @@ class Descartes2SKU {
   /**
    * [descartes_2 算法二递归]
    * @method descartes_2
-   * @return {[Array]}    [二维数组]
+   * @param  {[Array]}    _arr [船儿的数组]
+   * @return {[Array]}    [算法二递归]
    */
   descartes_2 (_arr) {
-    const arr = _arr || this._arr
+    const arr = _arr || this._arrORobj
     const end = arr.length - 1
     const result = []
 
@@ -79,10 +108,11 @@ class Descartes2SKU {
   /**
    * [descartes_1 入口函数]
    * @method descartes_1
+   * @param  {[Array]}    _arr [船儿的数组]
    * @return {[Array]}  [Array|[Array1,Array2,Array3,...]]
    */
   descartes_1 (_arr) {
-    const arr = _arr || this._arr
+    const arr = _arr || this._arrORobj
     let result = []
 
     if (!arr) return []

@@ -23,12 +23,12 @@ var SKU2Descartes = function () {
   function SKU2Descartes(arr) {
     _classCallCheck(this, SKU2Descartes);
 
-    if (_lodash2.default.isArray(arr)) this._arr = arr;else throw new Error('arr is Array or Object');
+    if (_lodash2.default.isArray(arr)) this._arr = arr;else throw new Error('arr is Array');
   }
   /**
-   * [sku SKU 转换成笛卡尔乘积]
+   * [sku 根据输入的内容执行相应的函数]
    * @method sku
-   * @return {[Array]} [笛卡尔乘积数组]
+   * @return {[Array | Object]} [笛卡儿积]
    */
 
 
@@ -36,6 +36,25 @@ var SKU2Descartes = function () {
     key: 'sku',
     value: function sku() {
       var sku = this._arr;
+      var result = [];
+
+      if (_lodash2.default.size(sku) > 0) {
+        if (_lodash2.default.isArray(sku[0])) result = this.sku_arr(sku);else if (_lodash2.default.isObject(sku[0])) result = this.sku_obj(sku);
+      }
+      return result;
+    }
+
+    /**
+     * [sku_arr SKU转换成笛卡尔乘积]
+     * @method sku_arr
+     * @param  {[Array]} _sku [传入SKU数组]
+     * @return {[Array]} [笛卡尔乘积]
+     */
+
+  }, {
+    key: 'sku_arr',
+    value: function sku_arr(_sku) {
+      var sku = _sku || this._arr;
       var sku_length = 0;
       var arr = [];
 
@@ -54,16 +73,18 @@ var SKU2Descartes = function () {
 
       return arr;
     }
+
     /**
      * [sku_obj 允许传入含有键的对象]
      * @method sku_obj
+     * @param  {[Array]} _sku [传入SKU数组]
      * @return {[Object]} [笛卡尔乘积数组]
      */
 
   }, {
     key: 'sku_obj',
-    value: function sku_obj() {
-      var sku = this._arr;
+    value: function sku_obj(_sku) {
+      var sku = _sku || this._arr;
       var sku_length = 0;
       var obj = {};
       var keys = [];

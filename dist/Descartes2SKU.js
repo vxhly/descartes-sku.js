@@ -26,19 +26,51 @@ var Descartes2SKU = function () {
   function Descartes2SKU(arrORobj) {
     _classCallCheck(this, Descartes2SKU);
 
-    if (_lodash2.default.isArray(arrORobj)) this._arr = arrORobj;else if (_lodash2.default.isObject(arrORobj)) this._obj = arrORobj;else throw new Error('arrORobj is Array or Object');
+    if (_lodash2.default.isArray(arrORobj) || _lodash2.default.isObject(arrORobj)) this.arrORobj = arrORobj;else throw new Error('arrORobj is Array or Object');
   }
   /**
-   * [descartes_obj 对象形式输出]
-   * @method descartes_obj
-   * @return {[Object]}      [对象]
+   * [descartes 根据输入的内容执行相应的函数]
+   * @method descartes
+   * @param  {[Number]}  algorithm [算法几，默认算法二，1，2]
+   * @return {[Array]}  [SKU数组]
    */
 
 
   _createClass(Descartes2SKU, [{
+    key: 'descartes',
+    value: function descartes(algorithm) {
+      var arrORobj = this.arrORobj;
+      var result = [];
+
+      if (_lodash2.default.size(arrORobj) > 0) {
+        if (_lodash2.default.isArray(arrORobj)) {
+          switch (algorithm) {
+            case 1:
+              result = this.descartes_1(arrORobj);
+              break;
+            case 2:
+              result = this.descartes_2(arrORobj);
+              break;
+            default:
+              result = this.descartes_2(arrORobj);
+          }
+        } else if (_lodash2.default.isObject(arrORobj)) result = this.descartes_obj(arrORobj);
+      }
+
+      return result;
+    }
+
+    /**
+     * [descartes_obj 对象形式输出]
+     * @method descartes_obj
+     * @param  {[Array | Object]}      _arrORobj [传入的数组或者对象]
+     * @return {[Object]}      [对象]
+     */
+
+  }, {
     key: 'descartes_obj',
-    value: function descartes_obj() {
-      var obj = this._obj;
+    value: function descartes_obj(_arrORobj) {
+      var obj = _arrORobj || this.arrORobj;
       var keys = _lodash2.default.keys(obj);
       var result = [];
       var arr = [];
@@ -67,13 +99,14 @@ var Descartes2SKU = function () {
     /**
      * [descartes_2 算法二递归]
      * @method descartes_2
-     * @return {[Array]}    [二维数组]
+     * @param  {[Array]}    _arr [船儿的数组]
+     * @return {[Array]}    [算法二递归]
      */
 
   }, {
     key: 'descartes_2',
     value: function descartes_2(_arr) {
-      var arr = _arr || this._arr;
+      var arr = _arr || this._arrORobj;
       var end = arr.length - 1;
       var result = [];
 
@@ -99,13 +132,14 @@ var Descartes2SKU = function () {
     /**
      * [descartes_1 入口函数]
      * @method descartes_1
+     * @param  {[Array]}    _arr [船儿的数组]
      * @return {[Array]}  [Array|[Array1,Array2,Array3,...]]
      */
 
   }, {
     key: 'descartes_1',
     value: function descartes_1(_arr) {
-      var arr = _arr || this._arr;
+      var arr = _arr || this._arrORobj;
       var result = [];
 
       if (!arr) return [];

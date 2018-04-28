@@ -41,16 +41,16 @@ import { Descartes2SKU2SKU } from './descartes-sku.js'
 
 const arr1 = [['a', 'b', 'c']]
 const descartes1 = new Descartes2SKU(arr1)
-const result1 = descartes1.descartes_1() // 算法一
-// descartes1.descartes_2() 算法二
+const result1 = descartes1.descartes() // 算法一
+// descartes1.descartes() 算法二
 
 console.log('result1', result1)
 //  => [ ['a'], ['b'], ['c'] ]
 
 const arr2 = [['a', 'b', 'c'], [1, 2, 3, 4, 5]]
 const descartes2 = new Descartes2SKU(arr2)
-const result2 = descartes2.descartes_1()
-// descartes2.descartes_2() 算法二
+const result2 = descartes2.descartes()
+// descartes2.descartes() 算法二
 
 console.log('result2', result2)
 // => [ 
@@ -61,8 +61,8 @@ console.log('result2', result2)
 
 const arr3 = [['黄色', '绿色', '黑色'], ['XL', 'X', 'XXL', 'L'], ['aa', 'bb']]
 const descartes3 = new Descartes2SKU(arr3)
-const result3 = descartes3.descartes_1()
-// descartes2.descartes_2() 算法二
+const result3 = descartes3.descartes()
+// descartes2.descartes() 算法二
 
 console.log('result3', result3)
 // => [ 
@@ -84,7 +84,7 @@ import { Descartes2SKU } from './descartes-sku.js'
 
 const obj = { size: ['XL', 'XXL'], type: ['羊毛'] }
 const descartes = new Descartes2SKU(obj)
-const result = descartes.descartes_obj()
+const result = descartes.descartes()
 
 console.log('result1', result)
 //  =>  [ { size: 'XL', type: '羊毛' }, { size: 'XXL', type: '羊毛' } ]
@@ -97,32 +97,34 @@ import { Descartes2SKU2SKU } from './descartes-sku.js'
 
 const obj1 = [ { size: 'XL', type: '羊毛' }, { size: 'XXL', type: '羊毛' } ]
 const descartes1 = new SKU2Descartes(obj1)
-const result1 = descartes1.sku_obj()
+const result1 = descartes1.sku()
 
 console.log('result1', result1)
 //  { size: ['XL', 'XXL'], type: ['羊毛'] }
 
 const obj2 = [ { size: 'XL' }, { size: 'XXL' } ]
 const descartes2 = new SKU2Descartes(obj2)
-const result2 = descartes2.sku_obj()
+const result2 = descartes2.sku()
 
 console.log('result2', result2)
 //  { size: ['XL', 'XXL'] }
 
 const obj3 = []
 const descartes3 = new SKU2Descartes(obj3)
-const result3 = descartes3.sku_obj()
+const result3 = descartes3.sku()
 
 console.log('result3', result3)
 //  {}
 
 const obj4 = [ { color: '黄色', size: 'XL' } ]
 const descartes4 = new SKU2Descartes(obj4)
-const result4 = descartes4.sku_obj()
+const result4 = descartes4.sku()
 
 console.log('result4', result4)
 //   { color: ['黄色'], size: ['XL'] }
 ```
+
+> 如果以上例子还不过瘾的话可以看 src/test1.js ~ src/test5.js 文件哦
 
 ## test
 
@@ -130,4 +132,6 @@ console.log('result4', result4)
 npm run test1 => 算法一（逐个匹配）
 npm run test2 => 算法二（递归）
 npm run test3 => 算法三（对象传入对象输出）
+npm run test4 => SKU 转 笛卡尔乘积数组（传入数组，数组套数组）
+npm run test5 => SKU 转 笛卡尔乘积数组（传入数组，数组套对象）
 ```

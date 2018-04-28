@@ -8,15 +8,32 @@ class SKU2Descartes {
    */
   constructor (arr) {
     if (_.isArray(arr)) this._arr = arr
-    else throw new Error('arr is Array or Object')
+    else throw new Error('arr is Array')
   }
   /**
-   * [sku SKU 转换成笛卡尔乘积]
+   * [sku 根据输入的内容执行相应的函数]
    * @method sku
-   * @return {[Array]} [笛卡尔乘积数组]
+   * @return {[Array | Object]} [笛卡儿积]
    */
   sku () {
     const sku = this._arr
+    let result = []
+
+    if (_.size(sku) > 0) {
+      if (_.isArray(sku[0])) result = this.sku_arr(sku)
+      else if (_.isObject(sku[0])) result = this.sku_obj(sku)
+    }
+    return result
+  }
+
+  /**
+   * [sku_arr SKU转换成笛卡尔乘积]
+   * @method sku_arr
+   * @param  {[Array]} _sku [传入SKU数组]
+   * @return {[Array]} [笛卡尔乘积]
+   */
+  sku_arr (_sku) {
+    const sku = _sku || this._arr
     let sku_length = 0
     const arr = []
 
@@ -35,13 +52,15 @@ class SKU2Descartes {
 
     return arr
   }
+
   /**
    * [sku_obj 允许传入含有键的对象]
    * @method sku_obj
+   * @param  {[Array]} _sku [传入SKU数组]
    * @return {[Object]} [笛卡尔乘积数组]
    */
-  sku_obj () {
-    const sku = this._arr
+  sku_obj (_sku) {
+    const sku = _sku || this._arr
     let sku_length = 0
     let obj = {}
     let keys = []

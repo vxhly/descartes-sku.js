@@ -86,19 +86,51 @@
 	  function Descartes2SKU(arrORobj) {
 	    _classCallCheck(this, Descartes2SKU);
 
-	    if (_lodash2.default.isArray(arrORobj)) this._arr = arrORobj;else if (_lodash2.default.isObject(arrORobj)) this._obj = arrORobj;else throw new Error('arrORobj is Array or Object');
+	    if (_lodash2.default.isArray(arrORobj) || _lodash2.default.isObject(arrORobj)) this.arrORobj = arrORobj;else throw new Error('arrORobj is Array or Object');
 	  }
 	  /**
-	   * [descartes_obj 对象形式输出]
-	   * @method descartes_obj
-	   * @return {[Object]}      [对象]
+	   * [descartes 根据输入的内容执行相应的函数]
+	   * @method descartes
+	   * @param  {[Number]}  algorithm [算法几，默认算法二，1，2]
+	   * @return {[Array]}  [SKU数组]
 	   */
 
 
 	  _createClass(Descartes2SKU, [{
+	    key: 'descartes',
+	    value: function descartes(algorithm) {
+	      var arrORobj = this.arrORobj;
+	      var result = [];
+
+	      if (_lodash2.default.size(arrORobj) > 0) {
+	        if (_lodash2.default.isArray(arrORobj)) {
+	          switch (algorithm) {
+	            case 1:
+	              result = this.descartes_1(arrORobj);
+	              break;
+	            case 2:
+	              result = this.descartes_2(arrORobj);
+	              break;
+	            default:
+	              result = this.descartes_2(arrORobj);
+	          }
+	        } else if (_lodash2.default.isObject(arrORobj)) result = this.descartes_obj(arrORobj);
+	      }
+
+	      return result;
+	    }
+
+	    /**
+	     * [descartes_obj 对象形式输出]
+	     * @method descartes_obj
+	     * @param  {[Array | Object]}      _arrORobj [传入的数组或者对象]
+	     * @return {[Object]}      [对象]
+	     */
+
+	  }, {
 	    key: 'descartes_obj',
-	    value: function descartes_obj() {
-	      var obj = this._obj;
+	    value: function descartes_obj(_arrORobj) {
+	      var obj = _arrORobj || this.arrORobj;
 	      var keys = _lodash2.default.keys(obj);
 	      var result = [];
 	      var arr = [];
@@ -127,13 +159,14 @@
 	    /**
 	     * [descartes_2 算法二递归]
 	     * @method descartes_2
-	     * @return {[Array]}    [二维数组]
+	     * @param  {[Array]}    _arr [船儿的数组]
+	     * @return {[Array]}    [算法二递归]
 	     */
 
 	  }, {
 	    key: 'descartes_2',
 	    value: function descartes_2(_arr) {
-	      var arr = _arr || this._arr;
+	      var arr = _arr || this._arrORobj;
 	      var end = arr.length - 1;
 	      var result = [];
 
@@ -159,13 +192,14 @@
 	    /**
 	     * [descartes_1 入口函数]
 	     * @method descartes_1
+	     * @param  {[Array]}    _arr [船儿的数组]
 	     * @return {[Array]}  [Array|[Array1,Array2,Array3,...]]
 	     */
 
 	  }, {
 	    key: 'descartes_1',
 	    value: function descartes_1(_arr) {
-	      var arr = _arr || this._arr;
+	      var arr = _arr || this._arrORobj;
 	      var result = [];
 
 	      if (!arr) return [];
@@ -17434,12 +17468,12 @@
 	  function SKU2Descartes(arr) {
 	    _classCallCheck(this, SKU2Descartes);
 
-	    if (_lodash2.default.isArray(arr)) this._arr = arr;else throw new Error('arr is Array or Object');
+	    if (_lodash2.default.isArray(arr)) this._arr = arr;else throw new Error('arr is Array');
 	  }
 	  /**
-	   * [sku SKU 转换成笛卡尔乘积]
+	   * [sku 根据输入的内容执行相应的函数]
 	   * @method sku
-	   * @return {[Array]} [笛卡尔乘积数组]
+	   * @return {[Array | Object]} [笛卡儿积]
 	   */
 
 
@@ -17447,6 +17481,25 @@
 	    key: 'sku',
 	    value: function sku() {
 	      var sku = this._arr;
+	      var result = [];
+
+	      if (_lodash2.default.size(sku) > 0) {
+	        if (_lodash2.default.isArray(sku[0])) result = this.sku_arr(sku);else if (_lodash2.default.isObject(sku[0])) result = this.sku_obj(sku);
+	      }
+	      return result;
+	    }
+
+	    /**
+	     * [sku_arr SKU转换成笛卡尔乘积]
+	     * @method sku_arr
+	     * @param  {[Array]} _sku [传入SKU数组]
+	     * @return {[Array]} [笛卡尔乘积]
+	     */
+
+	  }, {
+	    key: 'sku_arr',
+	    value: function sku_arr(_sku) {
+	      var sku = _sku || this._arr;
 	      var sku_length = 0;
 	      var arr = [];
 
@@ -17465,16 +17518,18 @@
 
 	      return arr;
 	    }
+
 	    /**
 	     * [sku_obj 允许传入含有键的对象]
 	     * @method sku_obj
+	     * @param  {[Array]} _sku [传入SKU数组]
 	     * @return {[Object]} [笛卡尔乘积数组]
 	     */
 
 	  }, {
 	    key: 'sku_obj',
-	    value: function sku_obj() {
-	      var sku = this._arr;
+	    value: function sku_obj(_sku) {
+	      var sku = _sku || this._arr;
 	      var sku_length = 0;
 	      var obj = {};
 	      var keys = [];
@@ -17518,14 +17573,14 @@
 
 	var arr1 = [['a', 'b', 'c']];
 	var descartes1 = new _index.Descartes2SKU(arr1);
-	var result1 = descartes1.descartes_1();
+	var result1 = descartes1.descartes(1);
 
 	console.log('result1', result1);
 	//  => [ ['a'], ['b'], ['c'] ]
 
 	var arr2 = [['a', 'b', 'c'], [1, 2, 3, 4, 5]];
 	var descartes2 = new _index.Descartes2SKU(arr2);
-	var result2 = descartes2.descartes_1();
+	var result2 = descartes2.descartes(1);
 
 	console.log('result2', result2);
 	// => [
@@ -17536,7 +17591,7 @@
 
 	var arr3 = [['黄色', '绿色', '黑色'], ['XL', 'X', 'XXL', 'L'], ['aa', 'bb']];
 	var descartes3 = new _index.Descartes2SKU(arr3);
-	var result3 = descartes3.descartes_1();
+	var result3 = descartes3.descartes(1);
 
 	console.log('result3', result3);
 	// => [
@@ -17552,7 +17607,7 @@
 
 	var arr4 = [];
 	var descartes4 = new _index.Descartes2SKU(arr4);
-	var result4 = descartes4.descartes_1();
+	var result4 = descartes4.descartes(1);
 
 	console.log('result4', result4);
 	// => []
@@ -17567,14 +17622,14 @@
 
 	var arr1 = [['a', 'b', 'c']];
 	var descartes1 = new _index.Descartes2SKU(arr1);
-	var result1 = descartes1.descartes_2();
+	var result1 = descartes1.descartes(2);
 
 	console.log('result1', result1);
 	//  => [ ['a'], ['b'], ['c'] ]
 
 	var arr2 = [['a', 'b', 'c'], [1, 2, 3, 4, 5]];
 	var descartes2 = new _index.Descartes2SKU(arr2);
-	var result2 = descartes2.descartes_2();
+	var result2 = descartes2.descartes(2);
 
 	console.log('result2', result2);
 	// => [
@@ -17585,7 +17640,7 @@
 
 	var arr3 = [['黄色', '绿色', '黑色'], ['XL', 'X', 'XXL', 'L'], ['aa', 'bb']];
 	var descartes3 = new _index.Descartes2SKU(arr3);
-	var result3 = descartes3.descartes_2();
+	var result3 = descartes3.descartes(2);
 
 	console.log('result3', result3);
 	// => [
@@ -17601,7 +17656,7 @@
 
 	var arr4 = [];
 	var descartes4 = new _index.Descartes2SKU(arr4);
-	var result4 = descartes4.descartes_2();
+	var result4 = descartes4.descartes(2);
 
 	console.log('result4', result4);
 	// => []
@@ -17616,49 +17671,49 @@
 
 	var obj1 = { size: ['XL', 'XXL'], type: ['羊毛'] };
 	var descartes1 = new _index.Descartes2SKU(obj1);
-	var result1 = descartes1.descartes_obj();
+	var result1 = descartes1.descartes();
 
 	console.log('result1', result1);
 	// =>  [ { size: 'XL', type: '羊毛' }, { size: 'XXL', type: '羊毛' } ]
 
 	var obj2 = { size: ['XL', 'XXL'] };
 	var descartes2 = new _index.Descartes2SKU(obj2);
-	var result2 = descartes2.descartes_obj();
+	var result2 = descartes2.descartes();
 
 	console.log('result2', result2);
 	// =>  [ { size: 'XL' }, { size: 'XXL' } ]
 
 	var obj3 = { size: ['XL', 'XXL'], type: [] };
 	var descartes3 = new _index.Descartes2SKU(obj3);
-	var result3 = descartes3.descartes_obj();
+	var result3 = descartes3.descartes();
 
 	console.log('result3', result3);
 	// =>  [ { size: 'XL' }, { size: 'XXL' } ]
 
 	var obj4 = { size: [], type: ['羊毛', '棉'] };
 	var descartes4 = new _index.Descartes2SKU(obj4);
-	var result4 = descartes4.descartes_obj();
+	var result4 = descartes4.descartes();
 
 	console.log('result4', result4);
 	// =>  [ { type: 'XL' }, { type: 'XXL' } ]
 
 	var obj5 = { size: [], type: [], color: [] };
 	var descartes5 = new _index.Descartes2SKU(obj5);
-	var result5 = descartes5.descartes_obj();
+	var result5 = descartes5.descartes();
 
 	console.log('result5', result5);
 	// =>  []
 
 	var obj6 = { color: ['黄色'], size: ['XL'], type: [] };
 	var descartes6 = new _index.Descartes2SKU(obj6);
-	var result6 = descartes6.descartes_obj();
+	var result6 = descartes6.descartes();
 
 	console.log('result6', result6);
 	// => [ { color: '黄色', size: 'XL' } ]
 
 	var obj7 = { color: [], size: ['XL'], type: ['棉'] };
 	var descartes7 = new _index.Descartes2SKU(obj7);
-	var result7 = descartes7.descartes_obj();
+	var result7 = descartes7.descartes();
 
 	console.log('result7', result7);
 	// =>  [ { size: 'XL', type: '棉' } ]
@@ -17709,28 +17764,28 @@
 
 	var obj1 = [{ size: 'XL', type: '羊毛' }, { size: 'XXL', type: '羊毛' }];
 	var descartes1 = new _index.SKU2Descartes(obj1);
-	var result1 = descartes1.sku_obj();
+	var result1 = descartes1.sku();
 
 	console.log('result1', result1);
 	//  { size: ['XL', 'XXL'], type: ['羊毛'] }
 
 	var obj2 = [{ size: 'XL' }, { size: 'XXL' }];
 	var descartes2 = new _index.SKU2Descartes(obj2);
-	var result2 = descartes2.sku_obj();
+	var result2 = descartes2.sku();
 
 	console.log('result2', result2);
 	//  { size: ['XL', 'XXL'] }
 
 	var obj3 = [];
 	var descartes3 = new _index.SKU2Descartes(obj3);
-	var result3 = descartes3.sku_obj();
+	var result3 = descartes3.sku();
 
 	console.log('result3', result3);
 	//  {}
 
 	var obj4 = [{ color: '黄色', size: 'XL' }];
 	var descartes4 = new _index.SKU2Descartes(obj4);
-	var result4 = descartes4.sku_obj();
+	var result4 = descartes4.sku();
 
 	console.log('result4', result4);
 	//   { color: ['黄色'], size: ['XL'] }
