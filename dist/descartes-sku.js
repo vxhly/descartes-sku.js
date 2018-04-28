@@ -47,7 +47,11 @@
 	__webpack_require__(1);
 	__webpack_require__(4);
 	__webpack_require__(5);
-	module.exports = __webpack_require__(6);
+	__webpack_require__(6);
+	__webpack_require__(7);
+	__webpack_require__(8);
+	__webpack_require__(9);
+	module.exports = __webpack_require__(10);
 
 
 /***/ }),
@@ -70,14 +74,17 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var Descartes = function () {
+	/**
+	 * [Descartes2SKU 笛卡尔积数组转换成一条条 SKU]
+	 */
+	var Descartes2SKU = function () {
 	  /**
 	   * [constructor 初始化]
 	   * @method constructor
 	   * @param  {[Array | Object]}    arrORobj [[Array1,Array2,Array3,...]]
 	   */
-	  function Descartes(arrORobj) {
-	    _classCallCheck(this, Descartes);
+	  function Descartes2SKU(arrORobj) {
+	    _classCallCheck(this, Descartes2SKU);
 
 	    if (_lodash2.default.isArray(arrORobj)) this._arr = arrORobj;else if (_lodash2.default.isObject(arrORobj)) this._obj = arrORobj;else throw new Error('arrORobj is Array or Object');
 	  }
@@ -88,7 +95,7 @@
 	   */
 
 
-	  _createClass(Descartes, [{
+	  _createClass(Descartes2SKU, [{
 	    key: 'descartes_obj',
 	    value: function descartes_obj() {
 	      var obj = this._obj;
@@ -249,10 +256,10 @@
 	    }
 	  }]);
 
-	  return Descartes;
+	  return Descartes2SKU;
 	}();
 
-	exports.default = Descartes;
+	exports.default = Descartes2SKU;
 
 /***/ }),
 /* 2 */
@@ -17380,21 +17387,144 @@
 
 	'use strict';
 
-	var _index = __webpack_require__(1);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.SKU2Descartes = exports.Descartes2SKU = undefined;
 
-	var _index2 = _interopRequireDefault(_index);
+	var _Descartes2SKU = __webpack_require__(1);
+
+	var _Descartes2SKU2 = _interopRequireDefault(_Descartes2SKU);
+
+	var _SKU2Descartes = __webpack_require__(5);
+
+	var _SKU2Descartes2 = _interopRequireDefault(_SKU2Descartes);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	exports.Descartes2SKU = _Descartes2SKU2.default;
+	exports.SKU2Descartes = _SKU2Descartes2.default;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _lodash = __webpack_require__(2);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var SKU2Descartes = function () {
+	  /**
+	   * [constructor 初始化]
+	   * @method constructor
+	   * @param  {[Array | Object]}    arr [[Array1,Array2,Array3,...]]
+	   */
+	  function SKU2Descartes(arr) {
+	    _classCallCheck(this, SKU2Descartes);
+
+	    if (_lodash2.default.isArray(arr)) this._arr = arr;else throw new Error('arr is Array or Object');
+	  }
+	  /**
+	   * [sku SKU 转换成笛卡尔乘积]
+	   * @method sku
+	   * @return {[Array]} [笛卡尔乘积数组]
+	   */
+
+
+	  _createClass(SKU2Descartes, [{
+	    key: 'sku',
+	    value: function sku() {
+	      var sku = this._arr;
+	      var sku_length = 0;
+	      var arr = [];
+
+	      sku.forEach(function (item, index) {
+	        var length = _lodash2.default.size(item);
+	        if (length > sku_length) sku_length = length;
+	      });
+
+	      for (var i = 0; i < sku_length; i++) {
+	        arr.push([]);
+	      }sku.forEach(function (sku_item, index) {
+	        sku_item.forEach(function (item, index) {
+	          if (!arr[index].includes(item)) arr[index].push(item);
+	        });
+	      });
+
+	      return arr;
+	    }
+	    /**
+	     * [sku_obj 允许传入含有键的对象]
+	     * @method sku_obj
+	     * @return {[Object]} [笛卡尔乘积数组]
+	     */
+
+	  }, {
+	    key: 'sku_obj',
+	    value: function sku_obj() {
+	      var sku = this._arr;
+	      var sku_length = 0;
+	      var obj = {};
+	      var keys = [];
+
+	      sku.forEach(function (item, index) {
+	        var length = _lodash2.default.size(item);
+	        if (length > sku_length) {
+	          sku_length = length;
+	          keys = _lodash2.default.keys(item);
+	        }
+	      });
+
+	      keys.forEach(function (item) {
+	        obj[item] = [];
+	      });
+
+	      sku.forEach(function (item, index) {
+	        keys.forEach(function (key_item, key_index) {
+	          var _obj = obj[key_item];
+	          var _value = item[key_item];
+	          if (!_obj.includes(_value)) _obj.push(_value);
+	        });
+	      });
+
+	      return obj;
+	    }
+	  }]);
+
+	  return SKU2Descartes;
+	}();
+
+	exports.default = SKU2Descartes;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _index = __webpack_require__(4);
+
 	var arr1 = [['a', 'b', 'c']];
-	var descartes1 = new _index2.default(arr1);
+	var descartes1 = new _index.Descartes2SKU(arr1);
 	var result1 = descartes1.descartes_1();
 
 	console.log('result1', result1);
 	//  => [ ['a'], ['b'], ['c'] ]
 
 	var arr2 = [['a', 'b', 'c'], [1, 2, 3, 4, 5]];
-	var descartes2 = new _index2.default(arr2);
+	var descartes2 = new _index.Descartes2SKU(arr2);
 	var result2 = descartes2.descartes_1();
 
 	console.log('result2', result2);
@@ -17405,7 +17535,7 @@
 	//    ]
 
 	var arr3 = [['黄色', '绿色', '黑色'], ['XL', 'X', 'XXL', 'L'], ['aa', 'bb']];
-	var descartes3 = new _index2.default(arr3);
+	var descartes3 = new _index.Descartes2SKU(arr3);
 	var result3 = descartes3.descartes_1();
 
 	console.log('result3', result3);
@@ -17421,33 +17551,29 @@
 	//    ]
 
 	var arr4 = [];
-	var descartes4 = new _index2.default(arr4);
+	var descartes4 = new _index.Descartes2SKU(arr4);
 	var result4 = descartes4.descartes_1();
 
 	console.log('result4', result4);
 	// => []
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _index = __webpack_require__(1);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _index = __webpack_require__(4);
 
 	var arr1 = [['a', 'b', 'c']];
-	var descartes1 = new _index2.default(arr1);
+	var descartes1 = new _index.Descartes2SKU(arr1);
 	var result1 = descartes1.descartes_2();
 
 	console.log('result1', result1);
 	//  => [ ['a'], ['b'], ['c'] ]
 
 	var arr2 = [['a', 'b', 'c'], [1, 2, 3, 4, 5]];
-	var descartes2 = new _index2.default(arr2);
+	var descartes2 = new _index.Descartes2SKU(arr2);
 	var result2 = descartes2.descartes_2();
 
 	console.log('result2', result2);
@@ -17458,7 +17584,7 @@
 	//    ]
 
 	var arr3 = [['黄色', '绿色', '黑色'], ['XL', 'X', 'XXL', 'L'], ['aa', 'bb']];
-	var descartes3 = new _index2.default(arr3);
+	var descartes3 = new _index.Descartes2SKU(arr3);
 	var result3 = descartes3.descartes_2();
 
 	console.log('result3', result3);
@@ -17474,72 +17600,140 @@
 	//    ]
 
 	var arr4 = [];
-	var descartes4 = new _index2.default(arr4);
+	var descartes4 = new _index.Descartes2SKU(arr4);
 	var result4 = descartes4.descartes_2();
 
 	console.log('result4', result4);
 	// => []
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _index = __webpack_require__(1);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	var _index = __webpack_require__(4);
 
 	var obj1 = { size: ['XL', 'XXL'], type: ['羊毛'] };
-	var descartes1 = new _index2.default(obj1);
+	var descartes1 = new _index.Descartes2SKU(obj1);
 	var result1 = descartes1.descartes_obj();
 
 	console.log('result1', result1);
 	// =>  [ { size: 'XL', type: '羊毛' }, { size: 'XXL', type: '羊毛' } ]
 
 	var obj2 = { size: ['XL', 'XXL'] };
-	var descartes2 = new _index2.default(obj2);
+	var descartes2 = new _index.Descartes2SKU(obj2);
 	var result2 = descartes2.descartes_obj();
 
 	console.log('result2', result2);
 	// =>  [ { size: 'XL' }, { size: 'XXL' } ]
 
 	var obj3 = { size: ['XL', 'XXL'], type: [] };
-	var descartes3 = new _index2.default(obj3);
+	var descartes3 = new _index.Descartes2SKU(obj3);
 	var result3 = descartes3.descartes_obj();
 
 	console.log('result3', result3);
 	// =>  [ { size: 'XL' }, { size: 'XXL' } ]
 
 	var obj4 = { size: [], type: ['羊毛', '棉'] };
-	var descartes4 = new _index2.default(obj4);
+	var descartes4 = new _index.Descartes2SKU(obj4);
 	var result4 = descartes4.descartes_obj();
 
 	console.log('result4', result4);
 	// =>  [ { type: 'XL' }, { type: 'XXL' } ]
 
 	var obj5 = { size: [], type: [], color: [] };
-	var descartes5 = new _index2.default(obj5);
+	var descartes5 = new _index.Descartes2SKU(obj5);
 	var result5 = descartes5.descartes_obj();
 
 	console.log('result5', result5);
 	// =>  []
 
 	var obj6 = { color: ['黄色'], size: ['XL'], type: [] };
-	var descartes6 = new _index2.default(obj6);
+	var descartes6 = new _index.Descartes2SKU(obj6);
 	var result6 = descartes6.descartes_obj();
 
 	console.log('result6', result6);
 	// => [ { color: '黄色', size: 'XL' } ]
 
 	var obj7 = { color: [], size: ['XL'], type: ['棉'] };
-	var descartes7 = new _index2.default(obj7);
+	var descartes7 = new _index.Descartes2SKU(obj7);
 	var result7 = descartes7.descartes_obj();
 
 	console.log('result7', result7);
 	// =>  [ { size: 'XL', type: '棉' } ]
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _index = __webpack_require__(4);
+
+	var arr1 = [['a'], ['b'], ['c']];
+	var descartes1 = new _index.SKU2Descartes(arr1);
+	var result1 = descartes1.sku();
+
+	console.log('result1', result1);
+	// => [ [ 'a', 'b', 'c' ] ]
+
+	var arr2 = [['a', 1], ['a', 2], ['a', 3], ['a', 4], ['a', 5], ['b', 1], ['b', 2], ['b', 3], ['b', 4], ['b', 5], ['c', 1], ['c', 2], ['c', 3], ['c', 4], ['c', 5]];
+	var descartes2 = new _index.SKU2Descartes(arr2);
+	var result2 = descartes2.sku();
+
+	console.log('result2', result2);
+	// => [['a', 'b', 'c'], [1, 2, 3, 4, 5]]
+
+	var arr3 = [['黄色', 'XL', 'aa'], ['黄色', 'XL', 'bb'], ['黄色', 'X', 'aa'], ['黄色', 'X', 'bb'], ['黄色', 'XXL', 'aa'], ['黄色', 'XXL', 'bb'], ['黄色', 'L', 'aa'], ['黄色', 'L', 'bb'], ['绿色', 'XL', 'aa'], ['绿色', 'XL', 'bb'], ['绿色', 'X', 'aa'], ['绿色', 'X', 'bb'], ['绿色', 'XXL', 'aa'], ['绿色', 'XXL', 'bb'], ['绿色', 'L', 'aa'], ['绿色', 'L', 'bb'], ['黑色', 'XL', 'aa'], ['黑色', 'XL', 'bb'], ['黑色', 'X', 'aa'], ['黑色', 'X', 'bb'], ['黑色', 'XXL', 'aa'], ['黑色', 'XXL', 'bb'], ['黑色', 'L', 'aa'], ['黑色', 'L', 'bb']];
+	var descartes3 = new _index.SKU2Descartes(arr3);
+	var result3 = descartes3.sku();
+
+	console.log('result3', result3);
+	// => [['黄色', '绿色', '黑色'], ['XL', 'X', 'XXL', 'L'], ['aa', 'bb']]
+
+	var arr4 = [];
+	var descartes4 = new _index.SKU2Descartes(arr4);
+	var result4 = descartes4.sku();
+
+	console.log('result4', result4);
+	// => []
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _index = __webpack_require__(4);
+
+	var obj1 = [{ size: 'XL', type: '羊毛' }, { size: 'XXL', type: '羊毛' }];
+	var descartes1 = new _index.SKU2Descartes(obj1);
+	var result1 = descartes1.sku_obj();
+
+	console.log('result1', result1);
+	//  { size: ['XL', 'XXL'], type: ['羊毛'] }
+
+	var obj2 = [{ size: 'XL' }, { size: 'XXL' }];
+	var descartes2 = new _index.SKU2Descartes(obj2);
+	var result2 = descartes2.sku_obj();
+
+	console.log('result2', result2);
+	//  { size: ['XL', 'XXL'] }
+
+	var obj3 = [];
+	var descartes3 = new _index.SKU2Descartes(obj3);
+	var result3 = descartes3.sku_obj();
+
+	console.log('result3', result3);
+	//  {}
+
+	var obj4 = [{ color: '黄色', size: 'XL' }];
+	var descartes4 = new _index.SKU2Descartes(obj4);
+	var result4 = descartes4.sku_obj();
+
+	console.log('result4', result4);
+	//   { color: ['黄色'], size: ['XL'] }
 
 /***/ })
 /******/ ]);

@@ -12,6 +12,8 @@
     "test1": "node dist/test1.js",
     "test2": "node dist/test2.js",
     "test3": "node dist/test3.js",
+    "test4": "node dist/test4.js",
+    "test5": "node dist/test5.js",
     "dev": "gulp dev",
     "watch": "gulp watch"
   },
@@ -19,12 +21,7 @@
     "type": "git",
     "url": "git+ssh://git@github.com/vxhly/descartes-sku.js.git"
   },
-  "keywords": [
-    "descartes",
-    "sku",
-    "javascript",
-    "es6"
-  ],
+  "keywords": ["descartes", "sku", "javascript", "es6"],
   "author": "vxhly <pengchengou@gmail.com>",
   "license": "MIT",
   "bugs": {

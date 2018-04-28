@@ -1,14 +1,14 @@
-import Descartes from './index.js'
+import { Descartes2SKU } from './index'
 
 const arr1 = [['a', 'b', 'c']]
-const descartes1 = new Descartes(arr1)
+const descartes1 = new Descartes2SKU(arr1)
 const result1 = descartes1.descartes_1()
 
 console.log('result1', result1)
 //  => [ ['a'], ['b'], ['c'] ]
 
 const arr2 = [['a', 'b', 'c'], [1, 2, 3, 4, 5]]
-const descartes2 = new Descartes(arr2)
+const descartes2 = new Descartes2SKU(arr2)
 const result2 = descartes2.descartes_1()
 
 console.log('result2', result2)
@@ -19,7 +19,7 @@ console.log('result2', result2)
 //    ]
 
 const arr3 = [['黄色', '绿色', '黑色'], ['XL', 'X', 'XXL', 'L'], ['aa', 'bb']]
-const descartes3 = new Descartes(arr3)
+const descartes3 = new Descartes2SKU(arr3)
 const result3 = descartes3.descartes_1()
 
 console.log('result3', result3)
@@ -35,7 +35,7 @@ console.log('result3', result3)
 //    ]
 
 const arr4 = []
-const descartes4 = new Descartes(arr4)
+const descartes4 = new Descartes2SKU(arr4)
 const result4 = descartes4.descartes_1()
 
 console.log('result4', result4)

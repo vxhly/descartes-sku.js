@@ -37,10 +37,10 @@ bower install descartes-sku.js --save
 > 提供两套算法，推荐使用算法二
 
 ```javascript
-import Descartes from './descartes-sku.js'
+import { Descartes2SKU2SKU } from './descartes-sku.js'
 
 const arr1 = [['a', 'b', 'c']]
-const descartes1 = new Descartes(arr1)
+const descartes1 = new Descartes2SKU(arr1)
 const result1 = descartes1.descartes_1() // 算法一
 // descartes1.descartes_2() 算法二
 
@@ -48,7 +48,7 @@ console.log('result1', result1)
 //  => [ ['a'], ['b'], ['c'] ]
 
 const arr2 = [['a', 'b', 'c'], [1, 2, 3, 4, 5]]
-const descartes2 = new Descartes(arr2)
+const descartes2 = new Descartes2SKU(arr2)
 const result2 = descartes2.descartes_1()
 // descartes2.descartes_2() 算法二
 
@@ -60,7 +60,7 @@ console.log('result2', result2)
 //    ]   
 
 const arr3 = [['黄色', '绿色', '黑色'], ['XL', 'X', 'XXL', 'L'], ['aa', 'bb']]
-const descartes3 = new Descartes(arr3)
+const descartes3 = new Descartes2SKU(arr3)
 const result3 = descartes3.descartes_1()
 // descartes2.descartes_2() 算法二
 
@@ -80,18 +80,54 @@ console.log('result3', result3)
 > 如果需要输出结果带有 key,则传入的必须为对象
 
 ```javascript
-import Descartes from './descartes-sku.js'
+import { Descartes2SKU } from './descartes-sku.js'
 
 const obj = { size: ['XL', 'XXL'], type: ['羊毛'] }
-const descartes = new Descartes(obj)
+const descartes = new Descartes2SKU(obj)
 const result = descartes.descartes_obj()
 
 console.log('result1', result)
 //  =>  [ { size: 'XL', type: '羊毛' }, { size: 'XXL', type: '羊毛' } ]
 ```
 
+> 如果需要将 SKU 转换成笛卡儿积形式,则需要使用 SKU2Descartes()
+
+```javascript
+import { Descartes2SKU2SKU } from './descartes-sku.js'
+
+const obj1 = [ { size: 'XL', type: '羊毛' }, { size: 'XXL', type: '羊毛' } ]
+const descartes1 = new SKU2Descartes(obj1)
+const result1 = descartes1.sku_obj()
+
+console.log('result1', result1)
+//  { size: ['XL', 'XXL'], type: ['羊毛'] }
+
+const obj2 = [ { size: 'XL' }, { size: 'XXL' } ]
+const descartes2 = new SKU2Descartes(obj2)
+const result2 = descartes2.sku_obj()
+
+console.log('result2', result2)
+//  { size: ['XL', 'XXL'] }
+
+const obj3 = []
+const descartes3 = new SKU2Descartes(obj3)
+const result3 = descartes3.sku_obj()
+
+console.log('result3', result3)
+//  {}
+
+const obj4 = [ { color: '黄色', size: 'XL' } ]
+const descartes4 = new SKU2Descartes(obj4)
+const result4 = descartes4.sku_obj()
+
+console.log('result4', result4)
+//   { color: ['黄色'], size: ['XL'] }
+```
+
 ## test
 
 ```bash
-npm run test
+npm run test1 => 算法一（逐个匹配）
+npm run test2 => 算法二（递归）
+npm run test3 => 算法三（对象传入对象输出）
 ```
