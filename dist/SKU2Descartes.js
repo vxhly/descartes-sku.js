@@ -23,7 +23,7 @@ var SKU2Descartes = function () {
   function SKU2Descartes(arr) {
     _classCallCheck(this, SKU2Descartes);
 
-    if (_lodash2.default.isArray(arr)) this._arr = arr;else throw new Error('arr is Array');
+    if (_lodash2.default.isArray(arr)) this._arr = arr;else throw new Error('Sorry, the receiving parameter should be an Array');
   }
   /**
    * [sku 根据输入的内容执行相应的函数]

@@ -8,7 +8,7 @@ class SKU2Descartes {
    */
   constructor (arr) {
     if (_.isArray(arr)) this._arr = arr
-    else throw new Error('arr is Array')
+    else throw new Error('Sorry, the receiving parameter should be an Array')
   }
   /**
    * [sku 根据输入的内容执行相应的函数]

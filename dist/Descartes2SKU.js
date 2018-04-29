@@ -26,7 +26,7 @@ var Descartes2SKU = function () {
   function Descartes2SKU(arrORobj) {
     _classCallCheck(this, Descartes2SKU);
 
-    if (_lodash2.default.isArray(arrORobj) || _lodash2.default.isObject(arrORobj)) this.arrORobj = arrORobj;else throw new Error('arrORobj is Array or Object');
+    if (_lodash2.default.isArray(arrORobj) || _lodash2.default.isObject(arrORobj)) this.arrORobj = arrORobj;else throw new Error('Sorry, the receiving parameter should be an Array or Object');
   }
   /**
    * [descartes 根据输入的内容执行相应的函数]

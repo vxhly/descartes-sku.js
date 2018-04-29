@@ -1,6 +1,6 @@
 'use strict';
 
-var _index = require('./index.js');
+var _index = require('./index');
 
 var obj1 = [{ size: 'XL', type: '羊毛' }, { size: 'XXL', type: '羊毛' }];
 var descartes1 = new _index.SKU2Descartes(obj1);

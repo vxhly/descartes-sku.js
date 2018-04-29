@@ -1,6 +1,6 @@
 'use strict';
 
-var _index = require('./index.js');
+var _index = require('./index');
 
 var arr1 = [['a', 'b', 'c']];
 var descartes1 = new _index.Descartes2SKU(arr1);

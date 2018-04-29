@@ -1,4 +1,4 @@
-import { SKU2Descartes } from './index.js'
+import { SKU2Descartes } from './index'
 
 const arr1 = [ ['a'], ['b'], ['c'] ]
 const descartes1 = new SKU2Descartes(arr1)

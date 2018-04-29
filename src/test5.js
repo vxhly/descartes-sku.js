@@ -1,4 +1,4 @@
-import { SKU2Descartes } from './index.js'
+import { SKU2Descartes } from './index'
 
 const obj1 = [ { size: 'XL', type: '羊毛' }, { size: 'XXL', type: '羊毛' } ]
 const descartes1 = new SKU2Descartes(obj1)

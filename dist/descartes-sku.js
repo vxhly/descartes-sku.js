@@ -46,12 +46,14 @@
 
 	__webpack_require__(1);
 	__webpack_require__(4);
-	__webpack_require__(5);
 	__webpack_require__(6);
+	__webpack_require__(5);
 	__webpack_require__(7);
 	__webpack_require__(8);
 	__webpack_require__(9);
-	module.exports = __webpack_require__(10);
+	__webpack_require__(10);
+	__webpack_require__(11);
+	module.exports = __webpack_require__(12);
 
 
 /***/ }),
@@ -86,7 +88,7 @@
 	  function Descartes2SKU(arrORobj) {
 	    _classCallCheck(this, Descartes2SKU);
 
-	    if (_lodash2.default.isArray(arrORobj) || _lodash2.default.isObject(arrORobj)) this.arrORobj = arrORobj;else throw new Error('arrORobj is Array or Object');
+	    if (_lodash2.default.isArray(arrORobj) || _lodash2.default.isObject(arrORobj)) this.arrORobj = arrORobj;else throw new Error('Sorry, the receiving parameter should be an Array or Object');
 	  }
 	  /**
 	   * [descartes 根据输入的内容执行相应的函数]
@@ -17424,7 +17426,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.SKU2Descartes = exports.Descartes2SKU = undefined;
+	exports.SearchSKU = exports.SKU2Descartes = exports.Descartes2SKU = undefined;
 
 	var _Descartes2SKU = __webpack_require__(1);
 
@@ -17434,10 +17436,15 @@
 
 	var _SKU2Descartes2 = _interopRequireDefault(_SKU2Descartes);
 
+	var _SearchSKU = __webpack_require__(6);
+
+	var _SearchSKU2 = _interopRequireDefault(_SearchSKU);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.Descartes2SKU = _Descartes2SKU2.default;
 	exports.SKU2Descartes = _SKU2Descartes2.default;
+	exports.SearchSKU = _SearchSKU2.default;
 
 /***/ }),
 /* 5 */
@@ -17468,7 +17475,7 @@
 	  function SKU2Descartes(arr) {
 	    _classCallCheck(this, SKU2Descartes);
 
-	    if (_lodash2.default.isArray(arr)) this._arr = arr;else throw new Error('arr is Array');
+	    if (_lodash2.default.isArray(arr)) this._arr = arr;else throw new Error('Sorry, the receiving parameter should be an Array');
 	  }
 	  /**
 	   * [sku 根据输入的内容执行相应的函数]
@@ -17569,6 +17576,80 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _lodash = __webpack_require__(2);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var SearchSKU = function () {
+	  /**
+	   * [constructor 搜索skuu]
+	   * @method constructor
+	   * @param  {[Array]}    SKU [SKU 数组]
+	   * @param  {[Object]}    sku [待搜索的对象]
+	   */
+	  function SearchSKU(SKU, sku) {
+	    _classCallCheck(this, SearchSKU);
+
+	    if (_lodash2.default.isArray(SKU)) this._SKU = SKU;else throw new Error('Sorry, the receiving parameter should be an Array');
+	    if (_lodash2.default.isObject(sku)) this._sku = sku;else throw new Error('Sorry, the receiving parameter should be an Object');
+	  }
+
+	  /**
+	   * [search 搜索]
+	   * @method search
+	   * @return {[Object]} [SKU]
+	   */
+
+
+	  _createClass(SearchSKU, [{
+	    key: 'search',
+	    value: function search() {
+	      var SKU = this._SKU;
+	      var sku = this._sku;
+	      var result = void 0;
+
+	      var _search = function _search(sku, search_obj, sku_key) {
+	        try {
+	          var _sku_key = sku_key || 0;
+	          var keys = _lodash2.default.keys(search_obj);
+	          var _result = [];
+	          sku.forEach(function (item) {
+	            if (item[keys[_sku_key]] === search_obj[keys[_sku_key]]) _result.push(item);
+	          });
+
+	          if (_lodash2.default.size(_result) > 1) _search(_result, search_obj, _sku_key + 1);else if (_lodash2.default.size(_result) === 1) result = _result;
+	        } catch (err) {
+	          throw new Error('The data entered is incorrect !!!');
+	        }
+	      };
+
+	      _search(SKU, sku);
+
+	      return _lodash2.default.size(result) === 1 && result ? result[0] : {};
+	    }
+	  }]);
+
+	  return SearchSKU;
+	}();
+
+	exports.default = SearchSKU;
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
 	var _index = __webpack_require__(4);
 
 	var arr1 = [['a', 'b', 'c']];
@@ -17613,7 +17694,7 @@
 	// => []
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17662,7 +17743,7 @@
 	// => []
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17719,7 +17800,7 @@
 	// =>  [ { size: 'XL', type: '棉' } ]
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17755,7 +17836,7 @@
 	// => []
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -17789,6 +17870,36 @@
 
 	console.log('result4', result4);
 	//   { color: ['黄色'], size: ['XL'] }
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _index = __webpack_require__(4);
+
+	var arr1 = [{ color: '黄色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' }, { color: '黄色', size: 'XL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test2' }, { color: '黄色', size: 'XL', type: '纯棉', stock: 99, price: 12, oteh: '测试', test: 'test3' }, { color: '黄色', size: 'XXL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test4' }, { color: '黄色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test5' }, { color: '黄色', size: 'XXL', type: '纯棉', stock: 99, price: 12, oteh: '测试', test: 'test6' }, { color: '绿色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test7' }, { color: '绿色', size: 'XL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test9' }, { color: '绿色', size: 'XL', type: '纯棉', stock: 99, price: 12, oteh: '测试', test: 'test23' }, { color: '绿色', size: 'XXL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test2323' }, { color: '绿色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测32试', test: 'test323' }, { color: '绿色', size: 'XXL', type: '纯棉', stock: 99, price: 12, oteh: '测323试', test: 'test' }, { color: '黑色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测23333试', test: 'test' }, { color: '黑色', size: 'XL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'te33st' }, { color: '黑色', size: 'XL', type: '纯棉', stock: 99, price: 12, oteh: '测试', test: 'te434st' }, { color: '黑色', size: 'XXL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'te33st' }, { color: '黑色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'tes2t' }, { color: '黑色', size: 'XXL', type: '纯棉', stock: 99, price: 12, oteh: '测试', test: 'tes22t' }];
+	var search_sku1 = { color: '黑色', size: 'XL', type: '羊毛' };
+	var descartes1 = new _index.SearchSKU(arr1, search_sku1);
+	var result1 = descartes1.search();
+
+	console.log('result1', result1);
+	// => { color: '黑色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测23333试', test: 'test' }
+
+	var search_sku2 = { color: '', size: '', type: '' };
+	var descartes2 = new _index.SearchSKU(arr1, search_sku2);
+	var result2 = descartes2.search();
+
+	console.log('result2', result2);
+	// => {}
+
+	var search_sku3 = { color: '紫色', size: '黑白', type: '无' };
+	var descartes3 = new _index.SearchSKU(arr1, search_sku3);
+	var result3 = descartes3.search();
+
+	console.log('result3', result3);
+	// => {}
 
 /***/ })
 /******/ ]);

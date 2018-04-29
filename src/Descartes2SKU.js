@@ -11,7 +11,7 @@ class Descartes2SKU {
    */
   constructor (arrORobj) {
     if (_.isArray(arrORobj) || _.isObject(arrORobj)) this.arrORobj = arrORobj
-    else throw new Error('arrORobj is Array or Object')
+    else throw new Error('Sorry, the receiving parameter should be an Array or Object')
   }
   /**
    * [descartes 根据输入的内容执行相应的函数]
