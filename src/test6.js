@@ -20,6 +20,7 @@ const arr1 = [
   { color: '黑色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'tes2t' },
   { color: '黑色', size: 'XXL', type: '纯棉', stock: 99, price: 12, oteh: '测试', test: 'tes22t' }
 ]
+
 const search_sku1 = { color: '黑色', size: 'XL', type: '羊毛' }
 const descartes1 = new SearchSKU(arr1, search_sku1)
 const result1 = descartes1.search()
@@ -40,3 +41,47 @@ const result3 = descartes3.search()
 
 console.log('result3', result3)
 // => {}
+
+const arr2 = [
+  { color: '黄色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' },
+  { color: '黄色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test2' },
+  { color: '黄绿色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' },
+  { color: '黄绿色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test2' }
+]
+
+const search_sku4 = { color: '黄绿色', size: 'XL' }
+const descartes4 = new SearchSKU(arr2, search_sku4)
+const result4 = descartes4.search()
+
+console.log('result4', result4)
+// => { color: '绿色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' }
+
+const search_sku5 = { color: '', size: '' }
+const descartes5 = new SearchSKU(arr2, search_sku5)
+const result5 = descartes5.search()
+
+console.log('result5', result5)
+// => {}
+
+const search_sku6 = { color: '紫色', size: '黑白' }
+const descartes6 = new SearchSKU(arr2, search_sku6)
+const result6 = descartes6.search()
+
+console.log('result6', result6)
+// => {}
+
+const arr3 = [
+  { color: '黄色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' },
+  { color: '黄绿色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' },
+  { color: '黑色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test2' },
+  { color: '白色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' },
+  { color: '灰色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' },
+  { color: '橘色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test2' }
+]
+
+const search_sku7 = { color: '白色' }
+const descartes7 = new SearchSKU(arr3, search_sku7)
+const result7 = descartes7.search()
+
+console.log('result7', result7)
+// => { color: '白色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' },

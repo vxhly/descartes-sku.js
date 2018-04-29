@@ -17604,36 +17604,55 @@
 	    if (_lodash2.default.isObject(sku)) this._sku = sku;else throw new Error('Sorry, the receiving parameter should be an Object');
 	  }
 
-	  /**
-	   * [search 搜索]
-	   * @method search
-	   * @return {[Object]} [SKU]
-	   */
-
-
 	  _createClass(SearchSKU, [{
 	    key: 'search',
 	    value: function search() {
 	      var SKU = this._SKU;
 	      var sku = this._sku;
+	      var result = {};
+
+	      if (_lodash2.default.size(SKU) > 0 && _lodash2.default.size(sku) > 0) {
+	        if (_lodash2.default.isObject(SKU[0])) result = this._Search_Obj(SKU, sku);
+	      }
+	      return result;
+	    }
+	  }, {
+	    key: '_Search_Arr',
+	    value: function _Search_Arr(_SKU, _sku) {
+	      var SKU = _SKU || this._SKU;
+	      var sku = _sku || this._sku;
+	      console.log(SKU, sku);
+	    }
+
+	    /**
+	     * [_Search_Obj 搜索]
+	     * @method _Search_Obj
+	     * @return {[Object]} [SKU]
+	     */
+
+	  }, {
+	    key: '_Search_Obj',
+	    value: function _Search_Obj(_SKU, _sku) {
+	      var SKU = _SKU || this._SKU;
+	      var sku = _sku || this._sku;
 	      var result = void 0;
 
-	      var _search = function _search(sku, search_obj, sku_key) {
+	      var _search = function _search(sku, _search_obj, sku_key) {
 	        try {
 	          var _sku_key = sku_key || 0;
-	          var keys = _lodash2.default.keys(search_obj);
+	          var keys = _lodash2.default.keys(_search_obj);
 	          var _result = [];
 	          sku.forEach(function (item) {
-	            if (item[keys[_sku_key]] === search_obj[keys[_sku_key]]) _result.push(item);
+	            if (item[keys[_sku_key]] === _search_obj[keys[_sku_key]]) _result.push(item);
 	          });
 
-	          if (_lodash2.default.size(_result) > 1) _search(_result, search_obj, _sku_key + 1);else if (_lodash2.default.size(_result) === 1) result = _result;
+	          if (_lodash2.default.size(_result) > 1) _search(_result, _search_obj, _sku_key + 1);else if (_lodash2.default.size(_result) === 1) result = _result;
 	        } catch (err) {
 	          throw new Error('The data entered is incorrect !!!');
 	        }
 	      };
 
-	      _search(SKU, sku);
+	      _search(_SKU, _sku);
 
 	      return _lodash2.default.size(result) === 1 && result ? result[0] : {};
 	    }
@@ -17880,6 +17899,7 @@
 	var _index = __webpack_require__(4);
 
 	var arr1 = [{ color: '黄色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' }, { color: '黄色', size: 'XL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test2' }, { color: '黄色', size: 'XL', type: '纯棉', stock: 99, price: 12, oteh: '测试', test: 'test3' }, { color: '黄色', size: 'XXL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test4' }, { color: '黄色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test5' }, { color: '黄色', size: 'XXL', type: '纯棉', stock: 99, price: 12, oteh: '测试', test: 'test6' }, { color: '绿色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test7' }, { color: '绿色', size: 'XL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test9' }, { color: '绿色', size: 'XL', type: '纯棉', stock: 99, price: 12, oteh: '测试', test: 'test23' }, { color: '绿色', size: 'XXL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test2323' }, { color: '绿色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测32试', test: 'test323' }, { color: '绿色', size: 'XXL', type: '纯棉', stock: 99, price: 12, oteh: '测323试', test: 'test' }, { color: '黑色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测23333试', test: 'test' }, { color: '黑色', size: 'XL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'te33st' }, { color: '黑色', size: 'XL', type: '纯棉', stock: 99, price: 12, oteh: '测试', test: 'te434st' }, { color: '黑色', size: 'XXL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'te33st' }, { color: '黑色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'tes2t' }, { color: '黑色', size: 'XXL', type: '纯棉', stock: 99, price: 12, oteh: '测试', test: 'tes22t' }];
+
 	var search_sku1 = { color: '黑色', size: 'XL', type: '羊毛' };
 	var descartes1 = new _index.SearchSKU(arr1, search_sku1);
 	var result1 = descartes1.search();
@@ -17900,6 +17920,38 @@
 
 	console.log('result3', result3);
 	// => {}
+
+	var arr2 = [{ color: '黄色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' }, { color: '黄色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test2' }, { color: '黄绿色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' }, { color: '黄绿色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test2' }];
+
+	var search_sku4 = { color: '黄绿色', size: 'XL' };
+	var descartes4 = new _index.SearchSKU(arr2, search_sku4);
+	var result4 = descartes4.search();
+
+	console.log('result4', result4);
+	// => { color: '绿色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' }
+
+	var search_sku5 = { color: '', size: '' };
+	var descartes5 = new _index.SearchSKU(arr2, search_sku5);
+	var result5 = descartes5.search();
+
+	console.log('result5', result5);
+	// => {}
+
+	var search_sku6 = { color: '紫色', size: '黑白' };
+	var descartes6 = new _index.SearchSKU(arr2, search_sku6);
+	var result6 = descartes6.search();
+
+	console.log('result6', result6);
+	// => {}
+
+	var arr3 = [{ color: '黄色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' }, { color: '黄绿色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' }, { color: '黑色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test2' }, { color: '白色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' }, { color: '灰色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' }, { color: '橘色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test2' }];
+
+	var search_sku7 = { color: '白色' };
+	var descartes7 = new _index.SearchSKU(arr3, search_sku7);
+	var result7 = descartes7.search();
+
+	console.log('result7', result7);
+	// => { color: '白色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' },
 
 /***/ })
 /******/ ]);

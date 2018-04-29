@@ -28,36 +28,55 @@ var SearchSKU = function () {
     if (_lodash2.default.isObject(sku)) this._sku = sku;else throw new Error('Sorry, the receiving parameter should be an Object');
   }
 
-  /**
-   * [search 搜索]
-   * @method search
-   * @return {[Object]} [SKU]
-   */
-
-
   _createClass(SearchSKU, [{
     key: 'search',
     value: function search() {
       var SKU = this._SKU;
       var sku = this._sku;
+      var result = {};
+
+      if (_lodash2.default.size(SKU) > 0 && _lodash2.default.size(sku) > 0) {
+        if (_lodash2.default.isObject(SKU[0])) result = this._Search_Obj(SKU, sku);
+      }
+      return result;
+    }
+  }, {
+    key: '_Search_Arr',
+    value: function _Search_Arr(_SKU, _sku) {
+      var SKU = _SKU || this._SKU;
+      var sku = _sku || this._sku;
+      console.log(SKU, sku);
+    }
+
+    /**
+     * [_Search_Obj 搜索]
+     * @method _Search_Obj
+     * @return {[Object]} [SKU]
+     */
+
+  }, {
+    key: '_Search_Obj',
+    value: function _Search_Obj(_SKU, _sku) {
+      var SKU = _SKU || this._SKU;
+      var sku = _sku || this._sku;
       var result = void 0;
 
-      var _search = function _search(sku, search_obj, sku_key) {
+      var _search = function _search(sku, _search_obj, sku_key) {
         try {
           var _sku_key = sku_key || 0;
-          var keys = _lodash2.default.keys(search_obj);
+          var keys = _lodash2.default.keys(_search_obj);
           var _result = [];
           sku.forEach(function (item) {
-            if (item[keys[_sku_key]] === search_obj[keys[_sku_key]]) _result.push(item);
+            if (item[keys[_sku_key]] === _search_obj[keys[_sku_key]]) _result.push(item);
           });
 
-          if (_lodash2.default.size(_result) > 1) _search(_result, search_obj, _sku_key + 1);else if (_lodash2.default.size(_result) === 1) result = _result;
+          if (_lodash2.default.size(_result) > 1) _search(_result, _search_obj, _sku_key + 1);else if (_lodash2.default.size(_result) === 1) result = _result;
         } catch (err) {
           throw new Error('The data entered is incorrect !!!');
         }
       };
 
-      _search(SKU, sku);
+      _search(_SKU, _sku);
 
       return _lodash2.default.size(result) === 1 && result ? result[0] : {};
     }

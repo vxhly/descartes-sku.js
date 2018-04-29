@@ -124,6 +124,26 @@ console.log('result4', result4)
 //   { color: ['黄色'], size: ['XL'] }
 ```
 
+> 提供搜索功能，暂时只支持传入对象的形式
+
+```javascript
+import { SearchSKU } from './descartes-sku.js'
+
+const arr2 = [
+  { color: '黄色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' },
+  { color: '黄色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test2' },
+  { color: '黄绿色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' },
+  { color: '黄绿色', size: 'XXL', type: '棉', stock: 99, price: 12, oteh: '测试', test: 'test2' }
+]
+
+const search_sku4 = { color: '黄绿色', size: 'XL' }
+const descartes4 = new SearchSKU(arr2, search_sku4)
+const result4 = descartes4.search()
+
+console.log('result4', result4)
+// => { color: '绿色', size: 'XL', type: '羊毛', stock: 99, price: 12, oteh: '测试', test: 'test1' }
+```
+
 > 如果以上例子还不过瘾的话可以看 src/test1.js ~ src/test5.js 文件哦
 
 ## test
@@ -134,4 +154,5 @@ npm run test2 => 算法二（递归）
 npm run test3 => 算法三（对象传入对象输出）
 npm run test4 => SKU 转 笛卡尔乘积数组（传入数组，数组套数组）
 npm run test5 => SKU 转 笛卡尔乘积数组（传入数组，数组套对象）
+npm run test6 => 搜索功能（传入对象）
 ```

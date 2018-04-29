@@ -10,13 +10,14 @@
     "build:major": "gulp bump:major && gulp dev",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test":
-      "npm run test1 && npm run test2 && npm run test3 && npm run test4 && npm run test5 && npm run test6",
+      "npm run test1 && npm run test2 && npm run test3 && npm run test4 && npm run test5 && npm run test6 && npm run test7",
     "test1": "node dist/test1.js",
     "test2": "node dist/test2.js",
     "test3": "node dist/test3.js",
     "test4": "node dist/test4.js",
     "test5": "node dist/test5.js",
     "test6": "node dist/test6.js",
+    "test7": "node dist/test7.js",
     "dev": "gulp dev",
     "watch": "gulp watch"
   },
