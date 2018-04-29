@@ -1,3 +1,13 @@
+<a name="1.4.0"></a>
+# [1.4.0](https://github.com/vxhly/descartes-sku.js/compare/v1.3.0...v1.4.0) (2018-04-29)
+
+
+### Features
+
+* **SearchSKU:** 新增 SKU 搜索，输入对象，即可搜索出该条 SKU ([d41f5c0](https://github.com/vxhly/descartes-sku.js/commit/d41f5c0))
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/vxhly/descartes-sku.js/compare/v1.2.8...v1.3.0) (2018-04-28)
 
