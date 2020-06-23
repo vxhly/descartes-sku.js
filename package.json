@@ -1,6 +1,6 @@
 {
   "name": "descartes-sku.js",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "笛卡尔乘积算法、用于生成商品 sku",
   "main": "src/index.js",
   "scripts": {
@@ -37,27 +37,27 @@
   },
   "homepage": "https://github.com/vxhly/descartes-sku.js#readme",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-eslint": "^8.2.3",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.1.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "cz-conventional-changelog": "^2.1.0",
-    "eslint": "^4.19.1",
-    "eslint-config-standard": "^11.0.0",
+    "cz-conventional-changelog": "^3.2.0",
+    "eslint": "^7.3.1",
+    "eslint-config-standard": "^14.1.1",
     "eslint-friendly-formatter": "^4.0.1",
-    "eslint-loader": "^2.0.0",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-promise": "^3.7.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "eslint-plugin-vue": "^4.5.0",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^7.0.1",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "eslint-plugin-vue": "^6.2.2",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
     "gulp-browserify": "^0.5.1",
-    "gulp-bump": "^3.1.0",
-    "gulp-load-plugins": "^1.5.0",
+    "gulp-bump": "^3.1.3",
+    "gulp-load-plugins": "^2.0.3",
     "gulp-sequence": "^1.0.0",
-    "gulp-uglify": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
     "gulp-webpack": "^1.5.0"
   },
   "config": {
@@ -66,6 +66,6 @@
     }
   },
   "dependencies": {
-    "lodash": "^4.17.5"
+    "lodash": "^4.17.15"
   }
 }
