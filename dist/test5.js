@@ -1,31 +1,29 @@
-'use strict';
+import { SKU2Descartes } from './index'
 
-var _index = require('./index');
+const obj1 = [ { size: 'XL', type: '羊毛' }, { size: 'XXL', type: '羊毛' } ]
+const descartes1 = new SKU2Descartes(obj1)
+const result1 = descartes1.sku()
 
-var obj1 = [{ size: 'XL', type: '羊毛' }, { size: 'XXL', type: '羊毛' }];
-var descartes1 = new _index.SKU2Descartes(obj1);
-var result1 = descartes1.sku();
-
-console.log('result1', result1);
+console.log('result1', result1)
 //  { size: ['XL', 'XXL'], type: ['羊毛'] }
 
-var obj2 = [{ size: 'XL' }, { size: 'XXL' }];
-var descartes2 = new _index.SKU2Descartes(obj2);
-var result2 = descartes2.sku();
+const obj2 = [ { size: 'XL' }, { size: 'XXL' } ]
+const descartes2 = new SKU2Descartes(obj2)
+const result2 = descartes2.sku()
 
-console.log('result2', result2);
+console.log('result2', result2)
 //  { size: ['XL', 'XXL'] }
 
-var obj3 = [];
-var descartes3 = new _index.SKU2Descartes(obj3);
-var result3 = descartes3.sku();
+const obj3 = []
+const descartes3 = new SKU2Descartes(obj3)
+const result3 = descartes3.sku()
 
-console.log('result3', result3);
+console.log('result3', result3)
 //  {}
 
-var obj4 = [{ color: '黄色', size: 'XL' }];
-var descartes4 = new _index.SKU2Descartes(obj4);
-var result4 = descartes4.sku();
+const obj4 = [ { color: '黄色', size: 'XL' } ]
+const descartes4 = new SKU2Descartes(obj4)
+const result4 = descartes4.sku()
 
-console.log('result4', result4);
+console.log('result4', result4)
 //   { color: ['黄色'], size: ['XL'] }

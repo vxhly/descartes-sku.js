@@ -1,40 +1,26 @@
 /**
  * 引入 gulp
  */
-var gulp = require('gulp') // 基础库
+const gulp = require('gulp') // 基础库
 
 /**
  * 版本信息
  */
-var pkg = require('./package.json')
-var gulpSequence = require('gulp-sequence')
+// const pkg = require('./package.json')
+// const gulpSequence = require('gulp-sequence')
 
 /**
  * gulp 模块化管理工具
  */
-var gulpLoadPlugins = require('gulp-load-plugins') // 模块化管理
-var $ = gulpLoadPlugins() // 定义变量
-var es2015 = require('babel-preset-es2015')
+const gulpLoadPlugins = require('gulp-load-plugins') // 模块化管理
+const $ = gulpLoadPlugins() // 定义变量
 
-var jsSrc = './src/*.js'
-
-var banner = ['/*!',
-  ' * <%= pkg.name %> - <%= pkg.description %>',
-  ' * ',
-  ' * @version v<%= pkg.version %>',
-  ' * ',
-  ' * @author <%= pkg.author %>',
-  ' * ',
-  ' * @link <%= pkg.homepage %>',
-  ' * @license <%= pkg.license %>',
-  ' */',
-  ''].join('\n')
+const jsSrc = './src/*.js'
 
 gulp.task('dev', function () {
   return gulp.src(jsSrc)
-    .pipe($.babel({presets: [es2015]}))
     .pipe(gulp.dest('./dist'))
-    .pipe($.webpack({// babel编译import会转成require，webpack再包装以下代码让代码里支持require
+    .pipe($.webpack({ // babel编译import会转成require，webpack再包装以下代码让代码里支持require
       output: {
         filename: 'descartes-sku.js'
       },
