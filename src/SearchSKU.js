@@ -24,6 +24,7 @@ class SearchSKU {
     }
     return result
   }
+
   _Search_Arr (_SKU, _sku) {
     const SKU = _SKU || this._SKU
     const sku = _sku || this._sku
@@ -42,7 +43,7 @@ class SearchSKU {
 
     const _search = (sku, _search_obj, sku_key) => {
       try {
-        let _sku_key = sku_key || 0
+        const _sku_key = sku_key || 0
         const keys = _.keys(_search_obj)
         const _result = []
         sku.forEach(item => {

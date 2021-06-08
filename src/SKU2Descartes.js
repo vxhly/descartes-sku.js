@@ -10,6 +10,7 @@ class SKU2Descartes {
     if (_.isArray(arr)) this._arr = arr
     else throw new Error('Sorry, the receiving parameter should be an Array')
   }
+
   /**
    * [sku 根据输入的内容执行相应的函数]
    * @method sku
@@ -62,7 +63,7 @@ class SKU2Descartes {
   _sku_obj (_sku) {
     const sku = _sku || this._arr
     let sku_length = 0
-    let obj = {}
+    const obj = {}
     let keys = []
 
     sku.forEach((item, index) => {
